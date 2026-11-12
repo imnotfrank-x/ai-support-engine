@@ -48,15 +48,19 @@ Si ninguna regla coincide, se devuelve BUG MEDIUM de manera provisional con revi
 
 `tests/cases.json` contiene las referencias antes de ejecutar la comparacion: nueve casos normales, uno ambiguo y dos adversariales. `npm run evidence` imprime resultados reales del motor tradicional, formato valido y porcentaje de coincidencia exacta de categoria, prioridad y revision humana. Esta medida sobre doce casos no demuestra precision en solicitudes nuevas. La evidencia de CI queda en GitHub Actions; no se generan resultados ficticios del motor generativo.
 
-## GitHub Flow
+## Flujo de ramas del equipo
 
-1. Actualizar la rama local main desde origin y crear una rama de trabajo.
+El flujo acordado es `rama de trabajo -> develop -> main`. develop integra los cambios del equipo; main recibe entregas verificadas mediante un PR desde develop.
+
+1. Actualizar origin/develop y crear una rama de trabajo desde esa referencia.
 2. Implementar un cambio pequeno, ejecutar las pruebas y hacer commit de archivos concretos.
-3. Hacer push solo de la rama y abrir un pull request hacia main.
-4. Otro integrante revisa el codigo y CI debe pasar antes del merge.
-5. Incorporar el cambio mediante el PR y actualizar las ramas locales.
+3. Hacer push solo de la rama y abrir un pull request con base develop.
+4. Otro integrante revisa el codigo y CI debe pasar antes del merge en develop.
+5. Al tener una entrega integrada y verificada, abrir un segundo PR con base main y compare develop.
 
-No hacer push directo ni force push a main. La proteccion remota debe exigir un PR, una aprobacion de otro integrante y el check `test`, aplicando tambien a administradores. Los tres integrantes deben poder explicar el codigo. Los commits preparados con asistencia no sustituyen sus aportaciones ni su revision.
+No hacer push directo ni force push a develop o main. Ambas ramas estan protegidas con un PR obligatorio, una aprobacion de otro integrante y el check `test`, aplicando tambien a administradores. Los tres integrantes deben poder explicar el codigo. Los commits preparados con asistencia no sustituyen sus aportaciones ni su revision.
+
+La [guia de Javier](docs/guia-javier.md) explica su rama, la integracion generativa real, pruebas y entrega mediante PR a develop.
 
 Reparto propuesto, pendiente de acuerdo del equipo:
 
