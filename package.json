@@ -1,0 +1,13 @@
+{
+  "name": "ai-support-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Prototipo de soporte del equipo DMI",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test",
+    "evidence": "node scripts/traditional-evidence.js"
+  }
+}
