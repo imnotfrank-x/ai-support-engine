@@ -2,6 +2,10 @@
 
 Prototipo del equipo DMI: Francisco, Javier y Carlos. Clasifica solicitudes de soporte con un contrato común para dos motores.
 
+**Integrante:** Javier Hernández Méndez
+
+**Matrícula:** 3523110052
+
 ## Estado
 
 - Motor tradicional por reglas y motor generativo mediante **Groq**, conectados a `POST /api/analyze`.
