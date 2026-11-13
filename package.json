@@ -8,6 +8,7 @@
   "scripts": {
     "start": "node src/server.js",
     "test": "node --test",
-    "evidence": "node scripts/traditional-evidence.js"
+    "evidence": "node scripts/traditional-evidence.js",
+    "evidence:generative": "node scripts/generative-evidence.js"
   }
 }
