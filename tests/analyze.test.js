@@ -25,7 +25,7 @@ test('contrato rechaza salidas generativas incompletas o inseguras', () => {
 });
 
 test('API HTTP valida entradas y entrega el motor tradicional', async (t) => {
-  const server = createApp();
+  const server = createApp({ generative: async () => { throw new Error('Detalle privado'); } });
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   t.after(() => new Promise((resolve) => server.close(resolve)));
   const url = `http://127.0.0.1:${server.address().port}/api/analyze`;
@@ -48,7 +48,7 @@ test('API HTTP valida entradas y entrega el motor tradicional', async (t) => {
   assert.equal((await request('x'.repeat(17000))).status, 413);
   assert.equal((await request('{}', { 'Content-Type': 'text/plain' })).status, 415);
   const unavailable = await request(JSON.stringify({ message: 'No puedo iniciar sesión', mode: 'generative' }));
-  assert.equal(unavailable.status, 501);
+  assert.equal(unavailable.status, 500);
   assert.equal('category' in await unavailable.json(), false);
   const wrongMethod = await fetch(url);
   assert.equal(wrongMethod.status, 405);
