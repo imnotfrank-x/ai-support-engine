@@ -16,5 +16,5 @@ const results = cases.map((sample) => {
   };
 });
 const correct = results.filter((item) => item.correct && item.validFormat).length;
-console.log(JSON.stringify({ mode: 'traditional', total: cases.length, correct, accuracyPercent: 100 * correct / cases.length, generative: 'PENDING_REAL_INTEGRATION', results }, null, 2));
+console.log(JSON.stringify({ mode: 'traditional', total: cases.length, correct, accuracyPercent: 100 * correct / cases.length, generative: 'NOT_RUN_BY_THIS_SCRIPT', results }, null, 2));
 if (correct !== cases.length) process.exitCode = 1;
