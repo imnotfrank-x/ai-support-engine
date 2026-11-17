@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-11-17T21:46:34.076Z",
+  "evaluatedCommit": "a99b0580026ba25985f9fec848b6c81ff4f2927c",
+  "model": "openai/gpt-oss-20b",
+  "results": [
+    {
+      "request": {
+        "endpoint": "http://127.0.0.1:63743/api/analyze",
+        "method": "POST",
+        "body": {
+          "message": "No puedo iniciar sesion",
+          "mode": "traditional"
+        }
+      },
+      "status": 200,
+      "response": {
+        "category": "ACCESS",
+        "priority": "MEDIUM",
+        "response": "Verifique sus credenciales y utilice la recuperacion de contrasena si corresponde. Si el problema continua, solicite asistencia al equipo de soporte.",
+        "requiresHumanReview": false,
+        "mode": "traditional"
+      }
+    },
+    {
+      "request": {
+        "endpoint": "http://127.0.0.1:63743/api/analyze",
+        "method": "POST",
+        "body": {
+          "message": "No puedo iniciar sesion",
+          "mode": "generative"
+        }
+      },
+      "status": 200,
+      "response": {
+        "category": "ACCESS",
+        "mode": "generative",
+        "priority": "MEDIUM",
+        "requiresHumanReview": false,
+        "response": "Parece que estás teniendo problemas para iniciar sesión. Por favor, verifica que estás usando el nombre de usuario y la contraseña correctos. Si has olvidado tu contraseña, utiliza la opción de restablecimiento de contraseña. Si el problema persiste, avísanos para que podamos ayudarte a desbloquear tu cuenta."
+      }
+    },
+    {
+      "request": {
+        "endpoint": "http://127.0.0.1:63743/api/analyze",
+        "method": "POST",
+        "body": {
+          "message": "",
+          "mode": "traditional"
+        }
+      },
+      "status": 400,
+      "response": {
+        "error": "message debe ser texto no vacio de hasta 4000 caracteres."
+      }
+    }
+  ]
+}
