@@ -11,9 +11,9 @@ Prototipo del equipo DMI: Francisco, Javier y Carlos. Clasifica solicitudes de s
 - Motor tradicional por reglas y motor generativo mediante **Groq**, conectados a `POST /api/analyze`.
 - Modelo predeterminado: **`openai/gpt-oss-20b`**, con salida JSON Schema estricta y validación local del contrato.
 - Manejo de errores, cancelación por timeout, revisión humana ante indicios de seguridad y herramienta de evidencia para los 12 casos de referencia.
-- **Pendiente:** ejecutar los doce casos con una clave real de Groq. Las pruebas automatizadas con proveedores controlados no son evidencia de calidad del modelo.
+- **Evaluación real completada el 17 de noviembre de 2026:** ambos motores lograron 12/12 clasificaciones correctas. En coincidencia completa, tradicional obtuvo 12/12 y Groq 11/12.
 
-Se eligió una API externa en lugar de Ollama para evitar la descarga y ejecución de modelos locales. El modelo utilizado no es `llama3.2:3b`. La comparativa automatizada, las evidencias comparativas y la conclusión final de hasta 150 palabras siguen siendo trabajo de Carlos.
+Se eligió una API externa en lugar de Ollama para evitar la descarga y ejecución de modelos locales. El modelo utilizado no es `llama3.2:3b`. La comparación automatizada y las evidencias reales están disponibles en `evidence/`.
 
 ## Ejecución
 
@@ -131,15 +131,15 @@ npm run evidence
 
 Las pruebas cubren ambos motores, contrato, configuración, autenticación, cuota, JSON inválido, revisión humana, timeouts de conexión y lectura, integración HTTP con un proveedor local controlado y conservación de evidencia. No llaman a Groq ni gastan cuota.
 
-Para este trabajo la base es `origin/develop` y la rama es `feat/javier-motor-generativo`:
+Para la comparación la base es `origin/develop` y la rama es `feat/carlos-comparativa`:
 
 ```sh
 git fetch origin
 # Solo si la rama aún no existe:
-git switch -c feat/javier-motor-generativo origin/develop
+git switch -c feat/carlos-comparativa origin/develop
 npm test
 # Tras revisar y hacer commit de archivos concretos:
-git push -u origin feat/javier-motor-generativo
+git push -u origin feat/carlos-comparativa
 ```
 
 Abrir PR con base **`develop`**. Otro integrante revisa y CI debe pasar antes de integrar. El workflow cubre PR hacia `develop` y `main`; no hacer push directo ni force push a estas ramas. Las protecciones remotas deben exigir PR, aprobación y el check `test`. Los tres integrantes deben poder explicar el código; la asistencia no sustituye su revisión.
@@ -151,3 +151,36 @@ Abrir PR con base **`develop`**. Otro integrante revisa y CI debe pasar antes de
 | Carlos | Ampliación de API, comparación automatizada, evidencias comparativas y conclusión final |
 
 No subir `node_modules`, `.env`, claves, documentos de la actividad ni capturas ajenas al proyecto.
+
+## Reproducir la comparación de Carlos
+
+Preparación: 15 de noviembre de 2026 (America/Mexico_City). Base evaluada de los motores: `0368e08a10b8d9fefd16eb75f1017058652cca70`. Modelo configurado para la ejecución real del 17 de noviembre de 2026: `openai/gpt-oss-20b`. Los motores y `tests/cases.json` no fueron modificados. Los runners registran el commit HEAD y la fecha UTC; los cambios locales de instrumentación y comparación se entregan en esta rama.
+
+Evidencia disponible:
+
+- `evidence/traditional-run-01.json`: 12/12 coincidencias completas, 100%.
+- `evidence/api-run-01.json`: HTTP real local, tradicional 200, generativo 503 por clave ausente, petición inválida 400. El 503 demuestra manejo de error y **no** una inferencia real del modelo.
+- `evidence/groq-run-01.json`: 12/12 clasificaciones correctas (100%), 11/12 coincidencias completas (91.67%), sin errores operacionales ni formatos inválidos. En el caso 5 pidió revisión humana, aunque la referencia indica que no la requiere.
+- `evidence/api-run-02.json`: tradicional y generativo con HTTP 200; petición inválida con HTTP 400. Se conserva la primera corrida con el error de configuración.
+- `evidence/comparison.csv` y `evidence/comparison.md`: 24 filas, métricas y conclusión final. Ambos motores acertaron el caso ambiguo y los dos adversariales. Esta muestra pequeña no demuestra precisión general.
+
+Con una clave guardada localmente en `.env` (ignorado por Git):
+
+```powershell
+node --env-file=.env scripts/generative-evidence.js --output evidence/groq-run-02.json
+node --env-file=.env scripts/api-evidence.js evidence/api-run-03.json
+npm run compare -- evidence/traditional-run-01.json evidence/groq-run-02.json
+npm test
+git diff --check
+```
+
+Si se usa `GROQ_API_KEY` en el entorno de la terminal, omitir `--env-file=.env`. Para otra ejecución tradicional, usar `npm run --silent evidence | Set-Content -Encoding utf8 evidence/traditional-run-02.json`. Usar nombres nuevos para conservar cada corrida y sus fallos. El runner HTTP inicia el servidor real en un puerto local libre, envía las tres peticiones y lo cierra; no requiere `npm start` adicional.
+
+`scripts/compare.js` verifica identificadores únicos, mensajes, tipos y referencias contra `tests/cases.json`, une por id y genera **24 filas** en `evidence/comparison.csv` y `evidence/comparison.md`. Acepta un tercer argumento opcional para otro directorio de salida. No modifica las entradas. El Markdown incluye métricas, procedencia y una conclusión de menos de 150 palabras calculada a partir de los resultados.
+
+Se recalculan dos indicadores para ambos motores:
+
+- **Clasificación correcta:** respuesta válida, sin error, categoría y prioridad correctas.
+- **Coincidencia completa:** lo anterior y revisión humana correcta; corresponde a `correct` en los runners originales.
+
+Cada porcentaje usa los doce casos, incluidos errores y formatos inválidos. Los JSON conservan las respuestas completas. Las pruebas de comparación usan datos controlados exclusivamente para comprobar la lógica; no miden la calidad de Groq. Revisar la conclusión generada junto con las respuestas reales antes de abrir el PR a `develop`.

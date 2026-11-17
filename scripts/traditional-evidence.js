@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
 import { analyzeTraditional } from '../src/traditional.js';
 import { isValidResult } from '../src/contract.js';
 
@@ -16,5 +17,6 @@ const results = cases.map((sample) => {
   };
 });
 const correct = results.filter((item) => item.correct && item.validFormat).length;
-console.log(JSON.stringify({ mode: 'traditional', total: cases.length, correct, accuracyPercent: 100 * correct / cases.length, generative: 'NOT_RUN_BY_THIS_SCRIPT', results }, null, 2));
+const evaluatedCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: new URL('..', import.meta.url), encoding: 'utf8' }).trim();
+console.log(JSON.stringify({ mode: 'traditional', timestamp: new Date().toISOString(), evaluatedCommit, total: cases.length, correct, accuracyPercent: 100 * correct / cases.length, generative: 'NOT_RUN_BY_THIS_SCRIPT', results }, null, 2));
 if (correct !== cases.length) process.exitCode = 1;

@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { basename, dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -9,6 +10,7 @@ function createReport(env) {
   return {
     mode: 'generative',
     provider: 'groq',
+    evaluatedCommit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: new URL('..', import.meta.url), encoding: 'utf8' }).trim(),
     timestamp: new Date().toISOString(),
     model: env.GROQ_MODEL ?? 'openai/gpt-oss-20b',
     config: {
