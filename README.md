@@ -2,9 +2,43 @@
 
 Prototipo del equipo DMI: Francisco, Javier y Carlos. Clasifica solicitudes de soporte con un contrato común para dos motores.
 
-**Integrante:** Javier Hernández Méndez
+## Integrantes y aportaciones
 
-**Matrícula:** 3523110052
+| Nombre completo | Matrícula | Aportación principal |
+| --- | --- | --- |
+| Francisco Xavier Gil Ginez | 3523110137 | Motor tradicional, API inicial, contrato común y casos de referencia |
+| Javier Hernández Méndez | 3523110052 | Motor generativo con Groq, validación de salida y manejo de errores del proveedor |
+| Carlos Eduardo Hernandez Camacho | 3515110194 | Comparación automatizada, evidencias reales, resultados y conclusión técnica |
+
+### Francisco Xavier Gil Ginez
+
+Implementó el motor tradicional mediante reglas para clasificar solicitudes como ACCESS, BUG, FEATURE o SECURITY, asignar prioridades y devolver respuestas predeterminadas. Definió la precedencia de seguridad y la revisión humana ante posibles incidentes o solicitudes ambiguas.
+
+Preparó la API inicial POST /api/analyze, la validación de solicitudes, el contrato compartido y los errores controlados. Agregó doce casos de referencia, incluidos uno ambiguo y dos adversariales, las catorce pruebas iniciales, el comando de evidencia tradicional, CI y las exclusiones de archivos locales y secretos.
+
+Archivos principales de su entrega inicial: `src/traditional.js`, `src/contract.js`, `src/server.js`, `tests/cases.json`, `tests/analyze.test.js`, `scripts/traditional-evidence.js`, `.github/workflows/ci.yml` y `.gitignore`. Varios recibieron ampliaciones posteriores del equipo.
+
+Evidencia de autoría: [commit 82a530b](https://github.com/imnotfrank-x/ai-support-engine/commit/82a530be62c9fe3fcab9e5db7493765475eccb7a) y [PR 1](https://github.com/imnotfrank-x/ai-support-engine/pull/1). El motor tradicional obtuvo doce coincidencias de doce en los casos de referencia.
+
+### Javier Hernández Méndez
+
+Integró la API de Groq con el modelo predeterminado `openai/gpt-oss-20b`. Implementó `analyzeGenerative`, las instrucciones del modelo, la separación del mensaje como datos no confiables, la solicitud de JSON Schema estricto y la validación local de la respuesta.
+
+Conectó el modo generativo al endpoint y agregó timeout, límite de tamaño de respuesta y errores controlados de autenticación, cuota, disponibilidad y formato. Conservó revisión humana ante indicios de seguridad sin alterar la categoría o prioridad del modelo. Agregó pruebas con proveedores controlados y el runner para conservar las doce respuestas reales y sus fallos; la ejecución final quedó incorporada en las evidencias de Carlos.
+
+Archivos principales: `src/generative.js`, integración en `src/server.js`, `scripts/generative-evidence.js`, `tests/generative.test.js` y `tests/generative-evidence.test.js`, además de ajustes en pruebas existentes, comandos, CI y documentación. Su entrega dejó treinta y cuatro pruebas aprobadas, sin que las pruebas automatizadas consumieran cuota de Groq.
+
+Evidencia de autoría: [commit 3f6dbf1](https://github.com/imnotfrank-x/ai-support-engine/commit/3f6dbf1a69ac30e367daeca06e2db7139b5a157d) y [PR 3](https://github.com/imnotfrank-x/ai-support-engine/pull/3), integrado en `develop`.
+
+### Carlos Eduardo Hernandez Camacho
+
+Implementó la comparación automática de los dos motores sobre los mismos doce casos. Verificó identificadores, mensajes y referencias, recalculó las métricas desde las respuestas y distinguió clasificación correcta de coincidencia completa con revisión humana. Los errores y formatos inválidos permanecen en el denominador.
+
+Agregó el runner de evidencia HTTP real y el registro de fecha y commit evaluado. Incorporó las respuestas reales de Groq, la evidencia tradicional, las ejecuciones HTTP con error de configuración y posterior éxito, la tabla de veinticuatro filas en CSV y Markdown y una conclusión técnica de ciento tres palabras. Agregó diez pruebas de comparación y documentó cómo reproducir los resultados.
+
+Archivos principales: `scripts/compare.js`, `scripts/api-evidence.js`, `tests/compare.test.js`, los archivos de `evidence/`, la instrumentación de ambos runners, `package.json` y este README. La entrega integrada cuenta con cuarenta y cuatro pruebas aprobadas.
+
+Evidencia de autoría: [commit 2658caa](https://github.com/imnotfrank-x/ai-support-engine/commit/2658caaa3ed7ae21e9689fb085e11da2a10b7c88) y [PR 5](https://github.com/imnotfrank-x/ai-support-engine/pull/5), integrado en `develop`. Ambos motores lograron doce de doce clasificaciones correctas; al incluir revisión humana, el tradicional obtuvo doce de doce y Groq once de doce.
 
 ## Estado
 
@@ -144,11 +178,7 @@ git push -u origin feat/carlos-comparativa
 
 Abrir PR con base **`develop`**. Otro integrante revisa y CI debe pasar antes de integrar. El workflow cubre PR hacia `develop` y `main`; no hacer push directo ni force push a estas ramas. Las protecciones remotas deben exigir PR, aprobación y el check `test`. Los tres integrantes deben poder explicar el código; la asistencia no sustituye su revisión.
 
-| Integrante | Trabajo |
-| --- | --- |
-| Francisco | Motor tradicional y referencias |
-| Javier | Modelo generativo real, errores, validación, conexión, pruebas y evidencia de su motor |
-| Carlos | Ampliación de API, comparación automatizada, evidencias comparativas y conclusión final |
+Las aportaciones, nombres completos y matrículas de los tres integrantes se documentan en la sección [Integrantes y aportaciones](#integrantes-y-aportaciones) de este mismo README.
 
 No subir `node_modules`, `.env`, claves, documentos de la actividad ni capturas ajenas al proyecto.
 
