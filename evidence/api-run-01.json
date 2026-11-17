@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-11-16T01:39:40.810Z",
+  "evaluatedCommit": "0368e08a10b8d9fefd16eb75f1017058652cca70",
+  "model": "openai/gpt-oss-20b",
+  "results": [
+    {
+      "request": {
+        "endpoint": "http://127.0.0.1:54667/api/analyze",
+        "method": "POST",
+        "body": {
+          "message": "No puedo iniciar sesion",
+          "mode": "traditional"
+        }
+      },
+      "status": 200,
+      "response": {
+        "category": "ACCESS",
+        "priority": "MEDIUM",
+        "response": "Verifique sus credenciales y utilice la recuperacion de contrasena si corresponde. Si el problema continua, solicite asistencia al equipo de soporte.",
+        "requiresHumanReview": false,
+        "mode": "traditional"
+      }
+    },
+    {
+      "request": {
+        "endpoint": "http://127.0.0.1:54667/api/analyze",
+        "method": "POST",
+        "body": {
+          "message": "No puedo iniciar sesion",
+          "mode": "generative"
+        }
+      },
+      "status": 503,
+      "response": {
+        "error": "Configure GROQ_API_KEY, GROQ_MODEL y GROQ_TIMEOUT_MS correctamente."
+      }
+    },
+    {
+      "request": {
+        "endpoint": "http://127.0.0.1:54667/api/analyze",
+        "method": "POST",
+        "body": {
+          "message": "",
+          "mode": "traditional"
+        }
+      },
+      "status": 400,
+      "response": {
+        "error": "message debe ser texto no vacio de hasta 4000 caracteres."
+      }
+    }
+  ]
+}
