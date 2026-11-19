@@ -1,6 +1,6 @@
 export const CATEGORIES = ['ACCESS', 'BUG', 'FEATURE', 'SECURITY'];
 export const PRIORITIES = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
-export const MODES = ['traditional', 'generative'];
+export const MODES = ['traditional', 'generative', 'ml'];
 
 export function validateRequest(body) {
   if (!body || typeof body !== 'object' || Array.isArray(body)) {
@@ -10,7 +10,7 @@ export function validateRequest(body) {
     return 'message debe ser texto no vacio de hasta 4000 caracteres.';
   }
   if (!MODES.includes(body.mode)) {
-    return 'mode debe ser traditional o generative.';
+    return 'mode debe ser traditional, generative o ml.';
   }
   return null;
 }

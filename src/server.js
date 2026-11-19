@@ -2,6 +2,7 @@ import { createServer } from 'node:http';
 import { pathToFileURL } from 'node:url';
 import { analyzeTraditional } from './traditional.js';
 import { analyzeGenerative, GenerativeError } from './generative.js';
+import { analyzeMl, MlError } from './ml.js';
 import { isValidResult, validateRequest } from './contract.js';
 
 const MAX_BODY_BYTES = 16384;
@@ -10,7 +11,7 @@ const send = (res, status, data) => {
   res.end(JSON.stringify(data));
 };
 
-export function createApp({ generative = analyzeGenerative } = {}) {
+export function createApp({ generative = analyzeGenerative, ml = analyzeMl } = {}) {
   return createServer(async (req, res) => {
     if (req.url !== '/api/analyze') return send(res, 404, { error: 'Ruta no encontrada.' });
     if (req.method !== 'POST') {
@@ -42,12 +43,15 @@ export function createApp({ generative = analyzeGenerative } = {}) {
       if (problem) return send(res, 400, { error: problem });
       const result = body.mode === 'generative'
         ? await generative(body.message.trim())
-        : analyzeTraditional(body.message.trim());
+        : body.mode === 'ml' ? await ml(body.message.trim())
+          : analyzeTraditional(body.message.trim());
       if (!isValidResult(result, body.mode)) throw new Error('Contrato invalido');
       return send(res, 200, result);
     } catch (error) {
       if (!res.headersSent && !res.destroyed) {
-        if (error instanceof GenerativeError) return send(res, error.status, { error: error.message });
+        if (error instanceof GenerativeError || error instanceof MlError) {
+          return send(res, error.status, { error: error.message });
+        }
         send(res, 500, { error: 'No fue posible analizar la solicitud.' });
       }
     }
