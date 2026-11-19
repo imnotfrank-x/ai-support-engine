@@ -1,0 +1,281 @@
+message,category,priority
+Mi usuario marca credenciales incorrectas al intentar iniciar sesión,ACCESS,MEDIUM
+No me llega el código de verificación en dos pasos para iniciar sesión,ACCESS,MEDIUM
+Se bloqueó mi cuenta personal después de tres intentos fallidos de acceso,ACCESS,MEDIUM
+Necesito restablecer mi contraseña porque caducó y no recuerdo la anterior,ACCESS,MEDIUM
+El enlace de recuperación de contraseña expiró antes de poder abrir mi cuenta,ACCESS,MEDIUM
+Me pide autenticar con MFA al entrar pero cambié de teléfono ayer,ACCESS,MEDIUM
+No puedo iniciar sesión con mi correo corporativo desde la aplicación móvil,ACCESS,MEDIUM
+El sistema rechaza mis credenciales personales al abrir el portal de acceso,ACCESS,MEDIUM
+Mi perfil de usuario quedó deshabilitado y no puedo iniciar sesión,ACCESS,MEDIUM
+La sesión se cierra apenas escribo mi usuario y contraseña en el login,ACCESS,MEDIUM
+Solicito desbloqueo de mi cuenta personal para iniciar sesión en ventas,ACCESS,MEDIUM
+No logro iniciar sesión con Google SSO usando mi cuenta individual,ACCESS,MEDIUM
+El código del autenticador MFA me marca inválido al iniciar sesión,ACCESS,MEDIUM
+Mi contraseña temporal ya no funciona para entrar a mi cuenta personal,ACCESS,MEDIUM
+Tengo permisos de acceso revocados en mi cuenta y no puedo iniciar sesión,ACCESS,MEDIUM
+Me aparece usuario no registrado al iniciar sesión con mis credenciales,ACCESS,MEDIUM
+No recibo el correo de recuperación de contraseña en mi bandeja personal,ACCESS,MEDIUM
+Mi cuenta individual muestra acceso denegado al validar mis credenciales,ACCESS,MEDIUM
+Al iniciar sesión desde mi laptop nueva el acceso queda bloqueado,ACCESS,MEDIUM
+Necesito renovar mi contraseña vencida para acceder al portal personal,ACCESS,MEDIUM
+Falla la validación de mi certificado de acceso al iniciar sesión,ACCESS,MEDIUM
+No puedo cambiar mi contraseña porque el sistema rechaza la clave actual,ACCESS,MEDIUM
+Se desvinculó mi autenticación biométrica y no logro entrar a mi cuenta,ACCESS,MEDIUM
+El login me pide aprobar el ingreso en un dispositivo antiguo sin acceso,ACCESS,MEDIUM
+Mi cuenta quedó suspendida por inactividad y requiero restablecer acceso,ACCESS,MEDIUM
+La VPN corporativa rechaza mis credenciales al intentar iniciar sesión,ACCESS,MEDIUM
+Tengo problemas para acceder a nómina con mi nueva contraseña personal,ACCESS,MEDIUM
+Me sale sesión expirada justo después de escribir usuario y contraseña,ACCESS,MEDIUM
+No funciona el botón de iniciar sesión con Microsoft en mi perfil,ACCESS,MEDIUM
+Mi correo institucional no recibe el PIN temporal para iniciar sesión,ACCESS,MEDIUM
+Requiero restablecer mi contraseña porque se bloqueó mi cuenta por intentos fallidos,ACCESS,MEDIUM
+No puedo entrar a mi cuenta desde Chrome por token de sesión inválido,ACCESS,MEDIUM
+Mi usuario nuevo aún no tiene acceso habilitado para iniciar sesión,ACCESS,MEDIUM
+Perdí mi aplicación de autenticación y necesito reiniciar mi código MFA,ACCESS,MEDIUM
+El formulario de login indica cuenta bloqueada temporalmente para mi usuario,ACCESS,MEDIUM
+Olvide el PIN de acceso y el sistema bloqueó mi inicio de sesión,ACCESS,MEDIUM
+Mi token personal de acceso expiró y no me permite autenticar mi perfil,ACCESS,MEDIUM
+El portal de login rechaza mi correo corporativo aunque la contraseña es correcta,ACCESS,MEDIUM
+No recibo el SMS de autenticación para confirmar mi inicio de sesión,ACCESS,MEDIUM
+Se cerró mi sesión activa y ahora no reconoce mis credenciales de acceso,ACCESS,MEDIUM
+Necesito ayuda para recuperar el acceso a mi cuenta personal de soporte,ACCESS,MEDIUM
+El enlace de restablecimiento de clave me marca token vencido al entrar,ACCESS,MEDIUM
+Mi cuenta de colaborador aparece inactiva en el portal de inicio de sesión,ACCESS,MEDIUM
+No puedo autenticar mi sesión con SSO porque marca usuario deshabilitado,ACCESS,MEDIUM
+Cambie mi contraseña hoy pero el login sigue pidiendo las credenciales anteriores,ACCESS,MEDIUM
+Ningún empleado de toda la empresa puede iniciar sesión desde esta mañana,ACCESS,HIGH
+Fallo masivo en el SSO corporativo bloquea el inicio de sesión de todos los usuarios,ACCESS,HIGH
+Toda la sucursal norte tiene las cuentas bloqueadas al intentar iniciar sesión,ACCESS,HIGH
+El servicio de autenticación rechaza las credenciales de toda la empresa,ACCESS,HIGH
+Todos los clientes reportan que no logran iniciar sesión en su cuenta hoy,ACCESS,HIGH
+Se cayó el proveedor de inicio de sesión y bloqueó el acceso a toda la organización,ACCESS,HIGH
+Bloqueo generalizado de cuentas impide iniciar sesión a todo el equipo operativo,ACCESS,HIGH
+El portal de acceso rechaza las credenciales de todos los usuarios de la empresa,ACCESS,HIGH
+Nadie en toda la compañía logra iniciar sesión con SSO corporativo,ACCESS,HIGH
+La integración de Active Directory dejó sin acceso de inicio de sesión a toda la empresa,ACCESS,HIGH
+Error masivo en tokens de autenticación impide entrar a todos los colaboradores,ACCESS,HIGH
+Toda el área administrativa tiene acceso denegado al iniciar sesión hoy,ACCESS,HIGH
+Falla global en el envío de códigos 2FA bloquea el ingreso de todos los usuarios,ACCESS,HIGH
+Todos los usuarios de la sede principal reciben rechazo de credenciales al entrar,ACCESS,HIGH
+El servidor de identidad rechaza el inicio de sesión para toda la organización,ACCESS,HIGH
+Ninguno de los agentes puede autenticar su cuenta desde la actualización de SSO,ACCESS,HIGH
+Todas las cuentas corporativas aparecen bloqueadas en el portal de inicio de sesión,ACCESS,HIGH
+Fallo general en la validación de contraseñas impide acceder a todo el personal,ACCESS,HIGH
+Todo el equipo comercial quedó fuera y nadie logra iniciar sesión en la plataforma,ACCESS,HIGH
+Se vencieron masivamente las sesiones y nadie en la empresa puede volver a entrar,ACCESS,HIGH
+El servicio de login con Microsoft falla para todos los empleados de la sucursal,ACCESS,HIGH
+Los códigos MFA marcan inválido para todos los usuarios al intentar iniciar sesión,ACCESS,HIGH
+Bloqueo masivo de acceso impide autenticarse a toda la plantilla de soporte,ACCESS,HIGH
+Nadie en el departamento de finanzas logra acceder por fallo general de credenciales,ACCESS,HIGH
+El inicio de sesión único dejó de aceptar cuentas para toda la organización,ACCESS,HIGH
+Al guardar un cliente nuevo la pantalla se queda cargando sin terminar,BUG,MEDIUM
+El botón de descargar factura en PDF no responde al hacer clic,BUG,MEDIUM
+Cuando filtro por fecha la tabla de pedidos muestra registros vacíos,BUG,MEDIUM
+La tabla de inventario duplica las filas al ordenar por precio,BUG,MEDIUM
+El formulario de registro borra los campos cuando selecciono una ciudad,BUG,MEDIUM
+La gráfica mensual de ventas muestra cantidades negativas por error de cálculo,BUG,MEDIUM
+El buscador interno arroja error 404 al escribir palabras con tilde,BUG,MEDIUM
+Al editar una dirección el formulario pierde el código postal guardado,BUG,MEDIUM
+La aplicación móvil se congela al adjuntar una fotografía en el reporte,BUG,MEDIUM
+El total del carrito calcula mal el impuesto cuando aplico un cupón,BUG,MEDIUM
+Los correos de confirmación salen con la plantilla HTML rota y desalineada,BUG,MEDIUM
+Al cambiar de pestaña en el perfil se cierra inesperadamente la vista,BUG,MEDIUM
+El paginador de la tabla siempre regresa a la primera página al avanzar,BUG,MEDIUM
+La exportación a Excel corta los ceros iniciales en los códigos postales,BUG,MEDIUM
+El selector de calendario marca un día anterior al que seleccioné,BUG,MEDIUM
+Al subir un archivo de dos megas el formulario lanza un fallo silencioso,BUG,MEDIUM
+La vista previa de impresión superpone el logotipo sobre la tabla,BUG,MEDIUM
+El contador de notificaciones no baja a cero después de abrir los avisos,BUG,MEDIUM
+Cuando elimino un registro de la tabla sigue visible hasta recargar,BUG,MEDIUM
+El módulo de cotizaciones falla con error de redondeo en los decimales,BUG,MEDIUM
+Al abrir el detalle de un pedido aparece error de referencia nula en pantalla,BUG,MEDIUM
+El botón de volver atrás dentro del asistente redirige a una página 404,BUG,MEDIUM
+La barra lateral se sobrepone sobre los botones en pantallas pequeñas,BUG,MEDIUM
+El formulario guarda dos veces la misma orden si hago clic rápido,BUG,MEDIUM
+Las fechas en los reportes exportados salen invertidas al cambiar idioma,BUG,MEDIUM
+El campo de teléfono rechaza guiones en el formulario aunque indica aceptarlos,BUG,MEDIUM
+Al cancelar una cita la vista sigue mostrando estado confirmado en la tabla,BUG,MEDIUM
+La carga de imágenes falla intermitentemente con error 502 en la galería,BUG,MEDIUM
+Cuando limpio los filtros la tabla no vuelve a mostrar todos los registros,BUG,MEDIUM
+El visor de documentos PDF muestra páginas en blanco en archivos escaneados,BUG,MEDIUM
+Al copiar un pedido anterior la pantalla omite las notas del cliente,BUG,MEDIUM
+La vista de detalle arroja excepción de JavaScript en la consola del navegador,BUG,MEDIUM
+El botón de guardar cambios permanece deshabilitado aunque llene el formulario,BUG,MEDIUM
+Al exportar el reporte semanal a CSV las columnas salen desordenadas,BUG,MEDIUM
+La pantalla de facturación se congela al seleccionar más de diez productos,BUG,MEDIUM
+El cálculo de descuentos aplica doble porcentaje en el resumen de compra,BUG,MEDIUM
+Cuando ordeno la tabla por fecha los registros quedan mezclados sin criterio,BUG,MEDIUM
+Al presionar el botón de imprimir recibo se cierra la ventana sin generar archivo,BUG,MEDIUM
+El filtro por estado ignora los tickets cerrados en la búsqueda de historial,BUG,MEDIUM
+La exportación a PDF omite los totales cuando la tabla supera dos páginas,BUG,MEDIUM
+El formulario de contacto no valida el correo y lanza error 500 al enviar,BUG,MEDIUM
+La gráfica de barras corta las etiquetas de los meses en la vista móvil,BUG,MEDIUM
+Al editar un producto guardado desaparece la imagen principal de la ficha,BUG,MEDIUM
+El botón de actualizar estado en pedidos no guarda el cambio en base de datos,BUG,MEDIUM
+La aplicación se cierra sola cada vez que abro el módulo de conciliación bancaria,BUG,MEDIUM
+El sistema completo en producción devuelve error 500 para todos los clientes,BUG,HIGH
+Caída total de la plataforma impide operar a toda la empresa ahora mismo,BUG,HIGH
+La base de datos principal dejó de responder y falló todo el sistema en producción,BUG,HIGH
+Todos los servicios del backend marcan error 503 de forma generalizada,BUG,HIGH
+La página web principal está caída para todos los usuarios desde hace veinte minutos,BUG,HIGH
+Ningún módulo de facturación funciona en producción para toda la organización,BUG,HIGH
+Fallo crítico en el servidor de pagos detuvo todas las compras en producción,BUG,HIGH
+Toda la aplicación web muestra pantalla en blanco tras el despliegue de hoy,BUG,HIGH
+Falla generalizada en la API de pedidos afecta a todas las sucursales,BUG,HIGH
+El sistema de envíos colapsó en producción y nadie puede generar guías,BUG,HIGH
+Se cayó el servidor principal y ninguna tienda logra cobrar ventas en producción,BUG,HIGH
+Todos los clientes ven error interno 500 al intentar confirmar el carrito,BUG,HIGH
+Interrupción total del servicio web mantiene detenida a toda la compañía,BUG,HIGH
+El microservicio de inventario falla en producción para todos los usuarios,BUG,HIGH
+Caída masiva del sistema de tickets deja inoperante a toda el área de soporte,BUG,HIGH
+Toda la plataforma de comercio está caída y devuelve error 502 a los clientes,BUG,HIGH
+El servidor de base de datos colapsó y ninguna sucursal puede registrar ventas,BUG,HIGH
+Error generalizado en producción detuvo la emisión de facturas para toda la empresa,BUG,HIGH
+Caída total de la API principal bloquea las operaciones de todo el sistema,BUG,HIGH
+Todos los módulos del portal muestran error 500 de manera continua en producción,BUG,HIGH
+El sistema central quedó completamente inaccesible para todas las tiendas,BUG,HIGH
+Falla masiva en el servidor web provoca caída generalizada del servicio,BUG,HIGH
+Ninguna aplicación del negocio responde tras la caída del clúster en producción,BUG,HIGH
+El procesador de pagos en producción arroja error 503 a todos los compradores,BUG,HIGH
+Interrupción crítica del backend mantiene sin operación a toda la organización,BUG,HIGH
+Me gustaría tener un filtro avanzado por rango de montos en los reportes,FEATURE,LOW
+Sería útil agregar exportación directa a formato CSV desde la tabla de clientes,FEATURE,LOW
+Queremos integrar un botón para compartir comprobantes por correo automático,FEATURE,LOW
+Propongo incluir atajos de teclado para navegar más rápido entre vistas,FEATURE,LOW
+Nos ayudaría contar con recordatorios automáticos tres días antes del vencimiento,FEATURE,LOW
+Quisiera personalizar las columnas visibles dentro del tablero principal,FEATURE,LOW
+Necesitamos soporte para subir múltiples archivos adjuntos al mismo tiempo,FEATURE,LOW
+Sería bueno añadir un historial de cambios por cada registro editado,FEATURE,LOW
+Solicito agregar tema de alto contraste para mejorar la lectura en oficina,FEATURE,LOW
+Queremos conectar la plataforma con Slack para recibir avisos de tareas,FEATURE,LOW
+Me gustaría poder guardar búsquedas frecuentes como vistas favoritas,FEATURE,LOW
+Podrían implementar firma electrónica dentro del flujo de aprobación,FEATURE,LOW
+Necesitamos generar códigos QR en las etiquetas de cada envío,FEATURE,LOW
+Quisiera programar el envío semanal de resúmenes ejecutivos por correo,FEATURE,LOW
+Sería práctico tener autocompletado al buscar nombres de proveedores,FEATURE,LOW
+Nos gustaría agregar comentarios internos visibles solo para supervisores,FEATURE,LOW
+Propongo incluir un calendario mensual para visualizar entregas pendientes,FEATURE,LOW
+Quisiéramos un indicador de progreso al importar catálogos grandes,FEATURE,LOW
+Sería ideal integrar mapas interactivos para ubicar cada sucursal,FEATURE,LOW
+Solicito una opción para duplicar plantillas de cotización existentes,FEATURE,LOW
+Queremos agregar soporte multiidioma para atender clientes en inglés,FEATURE,LOW
+Nos serviría una papelera de reciclaje para restaurar registros borrados,FEATURE,LOW
+Me gustaría poder arrastrar y soltar tarjetas entre columnas del tablero,FEATURE,LOW
+Podrían añadir validación automática de RFC al dar de alta clientes,FEATURE,LOW
+Necesitamos un endpoint público para consultar el estado de los pedidos,FEATURE,LOW
+Quisiera recibir alertas sonoras opcionales cuando llegue un ticket urgente,FEATURE,LOW
+Sería útil mostrar gráficas comparativas del trimestre actual contra el pasado,FEATURE,LOW
+Propongo agregar etiquetas de colores para organizar mejor los proyectos,FEATURE,LOW
+Queremos integrar pagos mediante transferencia SPEI con conciliación automática,FEATURE,LOW
+Nos gustaría contar con un modo compacto para ver más filas en pantalla,FEATURE,LOW
+Solicito habilitar la descarga masiva de facturas en un solo archivo ZIP,FEATURE,LOW
+Sería genial poder mencionar compañeros con arroba dentro de las notas,FEATURE,LOW
+Quisiera un asistente guiado para configurar cuentas nuevas paso a paso,FEATURE,LOW
+Necesitamos un reporte de productividad semanal por cada agente asignado,FEATURE,LOW
+Podrían incluir vista previa rápida al pasar el cursor sobre documentos,FEATURE,LOW
+Me gustaría poder fijar avisos importantes en la parte superior del muro,FEATURE,LOW
+Queremos añadir campos personalizados en el formulario de registro de leads,FEATURE,LOW
+Sería útil contar con respaldo automático diario descargable desde ajustes,FEATURE,LOW
+Propongo integrar autenticación con llave física FIDO2 en futuras versiones,FEATURE,LOW
+Nos gustaría tener un widget de chat interno entre ventas y almacén,FEATURE,LOW
+Solicito agregar ordenamiento múltiple por prioridad y fecha de creación,FEATURE,LOW
+Quisiera poder pausar temporalmente las notificaciones durante mi comida,FEATURE,LOW
+Sería práctico convertir cualquier correo recibido en una tarea con un clic,FEATURE,LOW
+Necesitamos calcular automáticamente el margen de ganancia en cada cotización,FEATURE,LOW
+Podrían agregar un glosario de ayuda contextual en formularios complejos,FEATURE,LOW
+Queremos mostrar una insignia de cliente frecuente en su ficha de perfil,FEATURE,LOW
+Me gustaría exportar las gráficas del tablero directamente como imagen PNG,FEATURE,LOW
+Sería bueno tener plantillas predefinidas para respuestas rápidas de soporte,FEATURE,LOW
+Solicito compatibilidad con lectores de pantalla para mejorar accesibilidad,FEATURE,LOW
+Nos ayudaría incluir un simulador de costos antes de confirmar pedidos grandes,FEATURE,LOW
+Queremos agregar integración con Google Calendar para agendar citas automáticas,FEATURE,LOW
+Me gustaría habilitar alertas por Telegram cuando cambie el estado de un envío,FEATURE,LOW
+Propongo incluir una barra de búsqueda global accesible desde cualquier pantalla,FEATURE,LOW
+Sería útil agregar filtros guardados por equipo dentro del panel de reportes,FEATURE,LOW
+Necesitamos exportar la lista de inventario con imágenes incluidas en PDF,FEATURE,LOW
+Quisiera personalizar los colores del encabezado con el logotipo de la marca,FEATURE,LOW
+Podrían añadir un botón para clonar campañas anteriores con un solo clic,FEATURE,LOW
+Nos gustaría contar con programación automática de tareas recurrentes mensuales,FEATURE,LOW
+Solicito agregar vista tipo lista además de la vista de tarjetas actual,FEATURE,LOW
+Sería práctico integrar firma digital con código QR en las constancias,FEATURE,LOW
+Queremos incluir un comparador lado a lado entre dos versiones de cotización,FEATURE,LOW
+Me gustaría poder archivar proyectos terminados sin eliminar su historial,FEATURE,LOW
+Propongo agregar estadísticas de tiempo promedio de atención por categoría,FEATURE,LOW
+Necesitamos soporte para importar contactos directamente desde archivos vCard,FEATURE,LOW
+Quisiera habilitar notificaciones push en escritorio para avisos importantes,FEATURE,LOW
+Sería bueno añadir etiquetas automáticas según el tipo de cliente registrado,FEATURE,LOW
+Podrían implementar un modo lectura sin distracciones para revisar reportes largos,FEATURE,LOW
+Nos gustaría conectar el catálogo con MercadoLibre para sincronizar existencias,FEATURE,LOW
+Solicito agregar vista semanal y diaria en el módulo de agenda compartida,FEATURE,LOW
+Queremos incluir un generador automático de folios personalizados por sucursal,FEATURE,LOW
+Detectamos una vulnerabilidad XSS reflejada en el parámetro de búsqueda,SECURITY,HIGH
+Hay claves privadas de AWS expuestas en un archivo público del repositorio,SECURITY,HIGH
+Existe una falla IDOR que permite ver facturas ajenas cambiando el ID en la URL,SECURITY,HIGH
+Encontramos tokens de sesión expuestos en texto plano dentro de los logs,SECURITY,HIGH
+Un formulario carece de protección CSRF y permite cambiar datos del usuario,SECURITY,HIGH
+Recibimos correos de phishing suplantando el dominio oficial de nuestra empresa,SECURITY,HIGH
+Un bucket de almacenamiento quedó con permisos públicos de lectura por error,SECURITY,HIGH
+Las contraseñas en pruebas se guardan en texto plano sin algoritmo de hash,SECURITY,HIGH
+El panel administrativo no valida roles y cualquier usuario abre rutas privadas,SECURITY,HIGH
+El servidor web acepta protocolos TLS obsoletos vulnerables a descifrado,SECURITY,HIGH
+Detectamos una vulnerabilidad path traversal que permite leer archivos internos,SECURITY,HIGH
+Credenciales de base de datos quedaron expuestas en un archivo del repositorio,SECURITY,HIGH
+Una librería del proyecto tiene una vulnerabilidad crítica de ejecución remota,SECURITY,HIGH
+El módulo de carga permite subir scripts ejecutables vulnerables en el servidor,SECURITY,HIGH
+Encontramos llaves API de producción expuestas directamente en el código fuente,SECURITY,HIGH
+Los tokens JWT no se invalidan al cerrar sesión y siguen siendo vulnerables,SECURITY,HIGH
+Una falla IDOR expone datos fiscales de terceros manipulando el número de folio,SECURITY,HIGH
+Falta la cabecera Content Security Policy y permite inyectar scripts XSS,SECURITY,HIGH
+Reportaron mensajes de phishing con enlaces falsos pidiendo claves de empleados,SECURITY,HIGH
+Las cabeceras HTTP exponen versiones internas vulnerables del servidor web,SECURITY,HIGH
+El login carece de límite de intentos y es vulnerable a fuerza bruta,SECURITY,HIGH
+Se hallaron secretos OAuth expuestos en el código JavaScript del navegador,SECURITY,HIGH
+La consola de depuración quedó expuesta en público mostrando credenciales de entorno,SECURITY,HIGH
+Un enlace de recuperación usa un token predecible vulnerable a enumeración,SECURITY,HIGH
+Archivo de respaldo accesible por web expone credenciales y configuración sensible,SECURITY,HIGH
+Reportamos posible inyección SQL en el campo de búsqueda avanzada de clientes,SECURITY,HIGH
+Un parámetro de la API es vulnerable a inyección SQL sin sanitización previa,SECURITY,HIGH
+Tokens de acceso quedaron expuestos en capturas subidas al repositorio interno,SECURITY,HIGH
+Detectamos correos fraudulentos de phishing dirigidos al área de contabilidad,SECURITY,HIGH
+El servidor de archivos expone directorios sensibles por permisos mal configurados,SECURITY,HIGH
+Una vulnerabilidad XSS almacenada permite ejecutar código en comentarios públicos,SECURITY,HIGH
+Llaves secretas de webhooks quedaron expuestas en un historial público de Git,SECURITY,HIGH
+El endpoint administrativo omite verificación CSRF en acciones sensibles de cuenta,SECURITY,HIGH
+Los permisos del almacenamiento en la nube dejaron expuestos documentos de clientes,SECURITY,HIGH
+Se identificó una vulnerabilidad de escalación de privilegios en el perfil de usuario,SECURITY,HIGH
+Un ataque de ransomware cifró los archivos compartidos del servidor de contabilidad,SECURITY,CRITICAL
+Detectamos acceso no autorizado en la cuenta de administrador creando usuarios ahora mismo,SECURITY,CRITICAL
+Alguien entró sin autorización a la base de datos y está extrayendo registros de clientes,SECURITY,CRITICAL
+Secuestraron la sesión de un gerente y realizan transferencias no autorizadas ahora mismo,SECURITY,CRITICAL
+Hay extracción activa de información confidencial hacia una IP externa desconocida,SECURITY,CRITICAL
+Un atacante activo ejecuta comandos remotos sin autorización en el servidor principal,SECURITY,CRITICAL
+Los servidores muestran nota de rescate de ransomware exigiendo pago para descifrar archivos,SECURITY,CRITICAL
+Se confirmó robo masivo de datos personales con extracción activa desde el portal,SECURITY,CRITICAL
+Alguien entró sin permiso a mi cuenta administrativa y cambió las credenciales de acceso,SECURITY,CRITICAL
+Detectamos malware activo exfiltrando archivos financieros desde dos servidores internos,SECURITY,CRITICAL
+Un intruso con acceso no autorizado borró bitácoras de auditoría en el servidor,SECURITY,CRITICAL
+Están extrayendo registros de tarjetas en vivo mediante una cuenta comprometida,SECURITY,CRITICAL
+Confirmamos brecha activa con robo de expedientes médicos hacia servidor externo,SECURITY,CRITICAL
+Un atacante externo entró sin autorización al panel administrativo y desactivó alertas,SECURITY,CRITICAL
+El servidor de archivos sufrió ransomware cifrador que bloqueó todas las carpetas,SECURITY,CRITICAL
+Detectamos tráfico saliente anómalo con extracción activa de respaldos de base de datos,SECURITY,CRITICAL
+Alguien secuestró la cuenta principal de la nube y está lanzando máquinas sin autorización,SECURITY,CRITICAL
+Se detectó acceso remoto no autorizado ejecutando malware activo en tiempo real,SECURITY,CRITICAL
+Comprometieron el servidor de correo y envían estafas desde nuestra cuenta oficial ahora,SECURITY,CRITICAL
+Confirmamos intrusión activa en el servidor de pagos capturando transacciones en curso,SECURITY,CRITICAL
+Hay una sesión no autorizada descargando toda la base de clientes en este momento,SECURITY,CRITICAL
+Un ransomware bloqueó los discos compartidos de nómina y dejó nota de rescate,SECURITY,CRITICAL
+Alguien entró sin permiso a producción y modificó los webhooks para desviar cobros,SECURITY,CRITICAL
+Sufrimos fuga activa de documentos legales hacia una dirección externa desconocida,SECURITY,CRITICAL
+Se confirmó secuestro de cuentas administrativas con acceso no autorizado a datos privados,SECURITY,CRITICAL
+Un intruso accedió sin autorización al servidor Linux y abrió una puerta trasera activa,SECURITY,CRITICAL
+Detectamos robo activo de llaves criptográficas desde una sesión comprometida en vivo,SECURITY,CRITICAL
+Malware tipo ransomware está cifrando carpetas en red de la sucursal central ahora mismo,SECURITY,CRITICAL
+Un usuario no autorizado obtuvo privilegios root y extrae respaldos confidenciales,SECURITY,CRITICAL
+Se observa exfiltración activa de la tabla de usuarios hacia un servidor externo,SECURITY,CRITICAL
+Alguien ingresó sin autorización a la cuenta de tesorería e inició retiros en curso,SECURITY,CRITICAL
+Confirmamos acceso no autorizado persistente con ejecución de malware en el clúster,SECURITY,CRITICAL
+Atacantes comprometieron cuentas de soporte y extraen información privada en tiempo real,SECURITY,CRITICAL
+El servidor de respaldos fue cifrado por ransomware y exige rescate en criptomonedas,SECURITY,CRITICAL
+Detectamos conexión no autorizada activa descargando expedientes completos de clientes,SECURITY,CRITICAL
