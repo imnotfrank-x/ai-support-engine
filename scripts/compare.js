@@ -6,13 +6,15 @@ import { isValidResult } from '../src/contract.js';
 const fields = ['category', 'priority', 'requiresHumanReview'];
 const columns = ['Caso', 'Tipo', 'Motor', 'Categoría esperada', 'Prioridad esperada', 'Categoría obtenida', 'Prioridad obtenida', 'Revisión esperada', 'Revisión obtenida', 'Formato válido', 'Clasificación correcta', 'Coincidencia completa', 'Error'];
 
-export function compare(traditional, generative, cases) {
+export function compare(traditional, generative, cases, ml) {
   if (!Array.isArray(cases) || !cases.length || new Set(cases.map(c => c.id)).size !== cases.length) {
     throw new Error('Referencias vacías o duplicadas.');
   }
   const rows = [];
   const metrics = {};
-  for (const [mode, report] of [['traditional', traditional], ['generative', generative]]) {
+  const reports = [['traditional', traditional], ['generative', generative]];
+  if (ml !== undefined) reports.push(['ml', ml]);
+  for (const [mode, report] of reports) {
     if (report?.mode !== mode || !Array.isArray(report.results)) throw new Error(`Evidencia inválida: ${mode}.`);
     const indexed = new Map(report.results.map(r => [r.id, r]));
     if (indexed.size !== report.results.length) throw new Error(`Casos duplicados: ${mode}.`);
