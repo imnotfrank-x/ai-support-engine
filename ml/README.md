@@ -1,4 +1,4 @@
-# Módulo de Machine Learning Local (`ml/`) — Parte 1
+# Módulo de Machine Learning Local (`ml/`) — Partes 1, 2 y 3
 
 **Autor:** Javier Hernández Méndez  
 **Matrícula:** 3523110052  
@@ -19,13 +19,13 @@ El módulo ML se integra al proyecto manteniendo el servidor de Node.js (`POST /
                                         │
                                         ▼
                         ┌───────────────────────────────┐
-                        │   Node.js API (src/server.js) │  [Parte 3 - pendiente]
+                        │   Node.js API (src/server.js) │  [Parte 3 - COMPLETADO]
                         │  Validación HTTP + contract.js│
                         └───────────────┬───────────────┘
                                         │
                                         ▼
                         ┌───────────────────────────────┐
-                        │     Cliente src/ml.js (Node)  │  [Parte 3 - pendiente]
+                        │     Cliente src/ml.js (Node)  │  [Parte 3 - COMPLETADO]
                         │ Timeout, errores 502/503/504, │
                         │ contrato + barrera seguridad  │
                         └───────────────┬───────────────┘
@@ -201,3 +201,48 @@ npm test
 `ml/tests/test_api.py` entrena artefactos temporales para probar HTTP y modelos reales sin depender de binarios versionados. También verifica el límite exacto de confianza con datos controlados, normalización, carga única, cierre, ausencia/corrupción de modelos y errores de inferencia. La integración de `mode: "ml"` en el contrato y gateway Node.js corresponde a la Parte 3 de Francisco.
 
 Validación local del 18 de noviembre de 2026: **18 pruebas Python y 44 pruebas Node aprobadas**; HTTP real con Uvicorn: salud 200, seguridad y ambigüedad 200, entrada vacía 422. Entorno: Python 3.14.0, scikit-learn 1.9.1, FastAPI 0.165.0, Uvicorn 0.54.0 y HTTPX 0.28.1. Starlette emite un aviso de deprecación sobre HTTPX en TestClient, sin fallar las pruebas; se conserva la dependencia solicitada en la guía.
+
+## 8. Parte 3 — Integración Node y evidencia ML
+
+**Francisco Xavier Gil Ginez (3523110137)** — rama `feat/francisco-ml-node`, desde `origin/develop` con las partes 1 y 2 integradas.
+
+El gateway ahora acepta `mode: "ml"`. `src/ml.js` consulta el servicio FastAPI con timeout de conexión y lectura, límite de 128 KiB, rechazo de redirecciones y validación de los cinco campos exactos. La configuración se obtiene únicamente del entorno del servidor: `ML_SERVICE_URL` (por defecto `http://127.0.0.1:8000/predict`) y `ML_TIMEOUT_MS` (5000 ms).
+
+- Configuración inválida, error de conexión o servicio 503: HTTP 503.
+- Timeout: HTTP 504.
+- Estado inesperado (incluidos 422/500), JSON o contrato inválidos y campos extra: HTTP 502.
+- La barrera conservadora de Node activa revisión humana si las reglas detectan seguridad; no cambia categoría o prioridad.
+
+Los modelos, dataset y doce referencias no se modificaron. La regla de baja confianza de la Parte 2 se mantiene: los resultados evaluados son los del servicio completo, no las clases crudas de los dos pipelines. El umbral no está calibrado y puede enviar solicitudes válidas a la clasificación provisional BUG/MEDIUM.
+
+Arrancar FastAPI como en la sección 7 y, desde otra terminal:
+
+```powershell
+npm start
+```
+
+Para las pruebas y una nueva corrida de evidencia:
+
+```powershell
+npm test
+.\.venv\Scripts\python.exe -m unittest discover -s ml/tests -v
+npm run evidence:ml -- --output evidence/ml-run-02.json
+npm run evidence:ml:api -- evidence/ml-api-run-02.json
+npm run compare:ml -- evidence/traditional-run-01.json evidence/groq-run-01.json evidence/ml-run-02.json
+```
+
+Los runners ML se conectan al servicio real; los tests Node utilizan un servidor controlado y no dependen de Python ni de Groq. Las corridas existentes no se sobrescriben. `ML_ARTIFACTS_DIR` permite al runner registrar hashes y métricas si se entrenó en otra carpeta; no cambia qué modelos sirve FastAPI, que debe arrancarse con esa misma carpeta.
+
+### Resultado de la corrida de Francisco
+
+El 18 de noviembre de 2026 (America/Mexico_City), la integración pasó **60 pruebas Node y 18 pruebas Python**. HTTP real gateway → FastAPI: seguridad y ambigüedad 200 con revisión humana; mensaje vacío 400 en Node. La evidencia registra UTC (19 de noviembre), commit evaluado, hashes, versiones y métricas. Se entrenó en una carpeta temporal para no sobrescribir `ml/artifacts/metrics.json` y se usó `create_app(artifacts_dir)` con el puerto 8018; el despliegue normal sigue usando 8000 y `ml/artifacts`.
+
+| Motor | Categoría y prioridad | Coincidencia completa | Formato válido |
+| --- | --- | --- | --- |
+| Reglas | 12/12 (100%) | 12/12 (100%) | 12/12 |
+| Groq | 12/12 (100%) | 11/12 (91.67%) | 12/12 |
+| ML local | 7/12 (58.33%) | 6/12 (50%) | 12/12 |
+
+Los dos primeros resultados reutilizan las evidencias históricas sin reejecutar Groq. La tabla triple mantiene las mismas referencias y el mismo criterio; no son corridas simultáneas. Los fallos y respuestas completas se conservan. En ML, los dos mensajes adversariales quedaron BUG/MEDIUM provisional con revisión humana: no se reportan como clasificaciones correctas. Las métricas de los 56 ejemplos de prueba del entrenamiento son de otra evaluación y no deben sustituir los resultados de estos doce casos.
+
+Evidencias: [ML](../evidence/ml-run-01.json), [API ML](../evidence/ml-api-run-01.json), [comparación triple y conclusión](../evidence/comparison-ml.md). Instrucciones completas y aportaciones individuales en el [README principal](../README.md#integración-ml-local).

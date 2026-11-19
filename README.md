@@ -1,14 +1,14 @@
 # AI Support Engine
 
-Prototipo del equipo DMI: Francisco, Javier y Carlos. Clasifica solicitudes de soporte con un contrato común para dos motores.
+Prototipo del equipo DMI: Francisco, Javier y Carlos. Clasifica solicitudes de soporte con un contrato común para tres motores: reglas, IA generativa y Machine Learning local.
 
 ## Integrantes y aportaciones
 
 | Nombre completo | Matrícula | Aportación principal |
 | --- | --- | --- |
-| Francisco Xavier Gil Ginez | 3523110137 | Motor tradicional, API inicial, contrato común y casos de referencia |
-| Javier Hernández Méndez | 3523110052 | Motor generativo con Groq, validación de salida y manejo de errores del proveedor |
-| Carlos Eduardo Hernandez Camacho | 3515110194 | Comparación automatizada, evidencias reales, resultados y conclusión técnica |
+| Francisco Xavier Gil Ginez | 3523110137 | Motor tradicional, API inicial y posterior integración Node de ML, pruebas y comparación triple |
+| Javier Hernández Méndez | 3523110052 | Motor generativo con Groq; dataset, preprocesamiento y entrenamiento de ML local |
+| Carlos Eduardo Hernandez Camacho | 3515110194 | Comparación inicial y evidencias; servicio de inferencia ML con FastAPI |
 
 ### Francisco Xavier Gil Ginez
 
@@ -20,6 +20,8 @@ Archivos principales de su entrega inicial: `src/traditional.js`, `src/contract.
 
 Evidencia de autoría: [commit 82a530b](https://github.com/imnotfrank-x/ai-support-engine/commit/82a530be62c9fe3fcab9e5db7493765475eccb7a) y [PR 1](https://github.com/imnotfrank-x/ai-support-engine/pull/1). El motor tradicional obtuvo doce coincidencias de doce en los casos de referencia.
 
+En la ampliación ML (Parte 3), conectó Node con FastAPI mediante `src/ml.js`, registró `mode: "ml"`, agregó inyección de dependencias y errores 502/503/504, pruebas Node aisladas de Python, runners de evidencia real y la comparación de los tres motores. Conservó las etiquetas del servicio y una barrera que solo activa revisión humana ante indicios de seguridad. Su rama es `feat/francisco-ml-node`; las instrucciones y resultados están en [Integración ML local](#integración-ml-local).
+
 ### Javier Hernández Méndez
 
 Integró la API de Groq con el modelo predeterminado `openai/gpt-oss-20b`. Implementó `analyzeGenerative`, las instrucciones del modelo, la separación del mensaje como datos no confiables, la solicitud de JSON Schema estricto y la validación local de la respuesta.
@@ -29,6 +31,8 @@ Conectó el modo generativo al endpoint y agregó timeout, límite de tamaño de
 Archivos principales: `src/generative.js`, integración en `src/server.js`, `scripts/generative-evidence.js`, `tests/generative.test.js` y `tests/generative-evidence.test.js`, además de ajustes en pruebas existentes, comandos, CI y documentación. Su entrega dejó treinta y cuatro pruebas aprobadas, sin que las pruebas automatizadas consumieran cuota de Groq.
 
 Evidencia de autoría: [commit 3f6dbf1](https://github.com/imnotfrank-x/ai-support-engine/commit/3f6dbf1a69ac30e367daeca06e2db7139b5a157d) y [PR 3](https://github.com/imnotfrank-x/ai-support-engine/pull/3), integrado en `develop`.
+
+En la ampliación ML (Parte 1), preparó el dataset sintético de 280 tickets, la normalización de texto, el entrenamiento TF-IDF con regresión logística para categoría y prioridad, las métricas y las pruebas del dataset y entrenamiento. Su aportación se integró mediante el [PR 10](https://github.com/imnotfrank-x/ai-support-engine/pull/10).
 
 ### Carlos Eduardo Hernandez Camacho
 
@@ -40,12 +44,15 @@ Archivos principales: `scripts/compare.js`, `scripts/api-evidence.js`, `tests/co
 
 Evidencia de autoría: [commit 2658caa](https://github.com/imnotfrank-x/ai-support-engine/commit/2658caaa3ed7ae21e9689fb085e11da2a10b7c88) y [PR 5](https://github.com/imnotfrank-x/ai-support-engine/pull/5), integrado en `develop`. Ambos motores lograron doce de doce clasificaciones correctas; al incluir revisión humana, el tradicional obtuvo doce de doce y Groq once de doce.
 
+En la ampliación ML (Parte 2), implementó `ml/src/predict.py` y `ml/src/app.py`: carga de modelos, inferencia, regla de baja confianza, plantillas y endpoints `/health` y `/predict`. Agregó las pruebas del servicio FastAPI. Su aportación se integró mediante el [PR 9](https://github.com/imnotfrank-x/ai-support-engine/pull/9).
+
 ## Estado
 
-- Motor tradicional por reglas y motor generativo mediante **Groq**, conectados a `POST /api/analyze`.
+- Motor tradicional por reglas, generativo mediante **Groq** y ML local mediante **FastAPI**, conectados a `POST /api/analyze`.
 - Modelo predeterminado: **`openai/gpt-oss-20b`**, con salida JSON Schema estricta y validación local del contrato.
 - Manejo de errores, cancelación por timeout, revisión humana ante indicios de seguridad y herramienta de evidencia para los 12 casos de referencia.
 - **Evaluación real completada el 17 de noviembre de 2026:** ambos motores lograron 12/12 clasificaciones correctas. En coincidencia completa, tradicional obtuvo 12/12 y Groq 11/12.
+- **Ampliación ML evaluada el 18 de noviembre de 2026 (America/Mexico_City):** 7/12 clasificaciones correctas y 6/12 coincidencias completas. Se conservaron los doce resultados, incluidos los fallos, en `evidence/ml-run-01.json`.
 
 Se eligió una API externa en lugar de Ollama para evitar la descarga y ejecución de modelos locales. El modelo utilizado no es `llama3.2:3b`. La comparación automatizada y las evidencias reales están disponibles en `evidence/`.
 
@@ -103,7 +110,7 @@ Con el servidor iniciado, petición en PowerShell:
 Invoke-RestMethod -Uri 'http://127.0.0.1:3000/api/analyze' -Method Post -ContentType 'application/json' -Body '{"message":"No puedo iniciar sesion","mode":"generative"}'
 ```
 
-`mode` admite `traditional` y `generative`. `message` debe ser texto no vacío de hasta 4000 caracteres. Los resultados exitosos cumplen `src/contract.js`:
+`mode` admite `traditional`, `generative` y `ml`. `message` debe ser texto no vacío de hasta 4000 caracteres. Los resultados exitosos cumplen `src/contract.js`:
 
 - `category`: `ACCESS`, `BUG`, `FEATURE` o `SECURITY`.
 - `priority`: `LOW`, `MEDIUM`, `HIGH` o `CRITICAL`.
@@ -214,3 +221,79 @@ Se recalculan dos indicadores para ambos motores:
 - **Coincidencia completa:** lo anterior y revisión humana correcta; corresponde a `correct` en los runners originales.
 
 Cada porcentaje usa los doce casos, incluidos errores y formatos inválidos. Los JSON conservan las respuestas completas. Las pruebas de comparación usan datos controlados exclusivamente para comprobar la lógica; no miden la calidad de Groq. Revisar la conclusión generada junto con las respuestas reales antes de abrir el PR a `develop`.
+
+## Integración ML local
+
+La arquitectura es híbrida: Node.js funciona como gateway y dueño del contrato; `src/ml.js` consulta por HTTP al servicio Python. FastAPI carga en memoria los dos pipelines de Javier y devuelve los cinco campos esperados. Los modos tradicional y ML pueden operar localmente sin una API externa durante la inferencia; el generativo sigue utilizando Groq.
+
+```text
+POST /api/analyze -> Node.js y validaciones
+                     |-- traditional -> reglas locales
+                     |-- generative  -> Groq
+                     `-- ml          -> src/ml.js -> FastAPI /predict -> modelos entrenados
+```
+
+### Preparación y arranque
+
+Desde la raíz del proyecto, con Python compatible con `ml/requirements.txt` y Node.js 22 o superior:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r ml/requirements.txt
+.\.venv\Scripts\python.exe ml/src/train.py
+.\.venv\Scripts\python.exe -m uvicorn ml.src.app:app --host 127.0.0.1 --port 8000
+```
+
+El entrenamiento genera los `.joblib` ignorados por Git. No requiere cambiar el dataset ni las referencias. Solo deben cargarse modelos generados localmente por el proyecto; los binarios de joblib no son un formato seguro para archivos no confiables. Reentrenar también regenera `ml/artifacts/metrics.json`; revisar ese cambio antes de versionarlo.
+
+En otra terminal, dentro del mismo proyecto:
+
+```powershell
+npm start
+```
+
+Y para probar la integración HTTP real:
+
+```powershell
+Invoke-RestMethod -Uri 'http://127.0.0.1:8000/health'
+$body = @{ message = 'Alguien entro a mi cuenta sin autorizacion'; mode = 'ml' } | ConvertTo-Json
+Invoke-RestMethod -Uri 'http://127.0.0.1:3000/api/analyze' -Method Post -ContentType 'application/json' -Body $body
+```
+
+| Variable del servidor Node | Predeterminado | Uso |
+| --- | --- | --- |
+| `ML_SERVICE_URL` | `http://127.0.0.1:8000/predict` | URL HTTP/HTTPS de inferencia, sin credenciales ni fragmento; no proviene del cliente |
+| `ML_TIMEOUT_MS` | `5000` | Timeout de conexión y lectura, entero positivo de hasta 2147483647 ms |
+| `ML_ARTIFACTS_DIR` | `ml/artifacts` respecto al proyecto | Solo para el runner de evidencia, permite registrar hashes y métricas si los modelos están en otra carpeta |
+
+Una configuración inválida, fallo de red o HTTP 503 del servicio se traduce en 503. Timeout devuelve 504. Estados inesperados del servicio (incluidos 422/500), JSON inválido, campos extra y resultados fuera de contrato devuelven 502. El gateway no expone el cuerpo del error de Python ni las trazas. No sigue redirecciones ni sustituye silenciosamente ML por otro motor.
+
+### Pruebas y evidencias reproducibles
+
+```powershell
+npm test
+.\.venv\Scripts\python.exe -m unittest discover -s ml/tests -v
+npm run evidence:ml -- --output evidence/ml-run-02.json
+npm run evidence:ml:api -- evidence/ml-api-run-02.json
+npm run compare:ml -- evidence/traditional-run-01.json evidence/groq-run-01.json evidence/ml-run-02.json
+```
+
+Los dos comandos de evidencia requieren FastAPI real encendido. `evidence:ml` consulta el servicio mediante `analyzeMl` una vez por cada caso, en orden, sin reintentos ni referencias enviadas al modelo. Conserva respuestas y errores. Sin argumentos usa `evidence/ml-run-01.json`; si ya existe, se rechaza la operación para preservar la corrida. Usar nombres nuevos. `evidence:ml:api` inicia un gateway HTTP real en un puerto libre y lo cierra al terminar; registra dos solicitudes ML y una entrada inválida, sin mocks.
+
+`compare:ml` produce `comparison-ml.csv` y `comparison-ml.md`, con 36 filas y la misma definición de acierto para todos. Admite una cuarta ruta opcional para guardar la comparación en otra carpeta. No altera la comparación de dos motores ni los JSON anteriores. Al reutilizar las evidencias originales, compara las mismas referencias pero corridas de distintas fechas y commits, no una ejecución simultánea.
+
+La corrida de Francisco registró **60 pruebas Node y 18 pruebas Python aprobadas**. Las pruebas Node no requieren Python, servicio activo, claves ni conexión a Groq. CI ejecuta ambos conjuntos en jobs separados; las pruebas Python entrenan sus propios artefactos temporales.
+
+### Resultados reales de la comparación triple
+
+| Motor | Categoría y prioridad correctas | Coincidencia completa con revisión humana | Formato válido |
+| --- | --- | --- | --- |
+| Traditional | 12/12 (100%) | 12/12 (100%) | 12/12 |
+| Generative (Groq) | 12/12 (100%) | 11/12 (91.67%) | 12/12 |
+| ML local | 7/12 (58.33%) | 6/12 (50%) | 12/12 |
+
+Fuentes: [ML real](evidence/ml-run-01.json), [gateway y FastAPI reales](evidence/ml-api-run-01.json), [tabla y conclusión triple](evidence/comparison-ml.md). La evidencia ML contiene el commit evaluado, el estado limpio de los archivos versionados, fechas UTC, hashes de modelos y dataset y métricas del entrenamiento local. Para no sobrescribir el reporte de entrenamiento previo, esta verificación entrenó en una carpeta temporal fuera del repositorio y arrancó `create_app(artifacts_dir)` con esos modelos; se utilizó el puerto 8018. Las instrucciones anteriores usan la carpeta y puerto predeterminados. Las versiones exactas usadas están en la evidencia.
+
+El servicio Python aplica un umbral fijo de confianza de categoría de 0.55: por debajo devuelve BUG/MEDIUM provisional con revisión humana. Node conserva esa salida y solo fuerza revisión si las reglas tradicionales detectan seguridad. Por ello, estos porcentajes evalúan el motor completo y no las etiquetas crudas de regresión logística. Los casos 2, 3, 11 y 12 quedaron incorrectos tras la regla provisional; el caso 5 falló en prioridad y el caso 4 difirió en revisión humana. No se ajustó el umbral ni el entrenamiento mirando estos doce casos.
+
+Las métricas de entrenamiento sobre 56 ejemplos de prueba (85.71% en categoría y 82.14% en prioridad) evalúan otro conjunto y cada objetivo por separado; no equivalen al 58.33% conjunto sobre estas doce referencias. Los datos sintéticos y la muestra pequeña limitan la generalización. Los porcentajes tampoco garantizan que el texto de respuesta sea verdadero o que todos los incidentes se detecten.
