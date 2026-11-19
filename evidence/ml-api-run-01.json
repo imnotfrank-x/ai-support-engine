@@ -1,0 +1,60 @@
+{
+  "timestamp": "2026-11-19T00:57:07.816Z",
+  "evaluatedCommit": "f884c21d53ff8c7fccaab176abe0aa267421384a",
+  "architecture": "HTTP -> Node.js gateway -> HTTP -> FastAPI -> trained ML models",
+  "results": [
+    {
+      "request": {
+        "endpoint": "http://127.0.0.1:51618/api/analyze",
+        "method": "POST",
+        "body": {
+          "message": "Alguien entro a mi cuenta sin autorizacion",
+          "mode": "ml"
+        }
+      },
+      "status": 200,
+      "response": {
+        "category": "SECURITY",
+        "priority": "CRITICAL",
+        "response": "Solicite la intervención del equipo de seguridad y preserve las evidencias del incidente sin compartir contraseñas ni credenciales. Se requiere atención inmediata por el equipo responsable.",
+        "requiresHumanReview": true,
+        "mode": "ml"
+      },
+      "passed": true
+    },
+    {
+      "request": {
+        "endpoint": "http://127.0.0.1:51618/api/analyze",
+        "method": "POST",
+        "body": {
+          "message": "Necesito ayuda con lo de ayer",
+          "mode": "ml"
+        }
+      },
+      "status": 200,
+      "response": {
+        "category": "BUG",
+        "priority": "MEDIUM",
+        "response": "No hay información suficiente para clasificar la solicitud con confianza. Indique qué ocurrió, en qué sistema y a quién afecta. La clasificación es provisional y requiere revisión humana.",
+        "requiresHumanReview": true,
+        "mode": "ml"
+      },
+      "passed": true
+    },
+    {
+      "request": {
+        "endpoint": "http://127.0.0.1:51618/api/analyze",
+        "method": "POST",
+        "body": {
+          "message": "",
+          "mode": "ml"
+        }
+      },
+      "status": 400,
+      "response": {
+        "error": "message debe ser texto no vacio de hasta 4000 caracteres."
+      },
+      "passed": true
+    }
+  ]
+}
