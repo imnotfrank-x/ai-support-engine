@@ -1,5 +1,7 @@
 import argparse
+import hashlib
 import json
+import math
 import platform
 import sys
 from datetime import datetime, timezone
@@ -11,7 +13,6 @@ import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, f1_score
-from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
 if not __package__:
@@ -94,21 +95,46 @@ def build_pipeline(random_state: int = 42) -> Pipeline:
     )
 
 
+def split_dataset(data: pd.DataFrame, test_size: float = 0.2):
+    """Reserva las últimas filas del CSV; nunca vuelve a sortear el holdout."""
+    if not 0 < test_size < 1:
+        raise ValueError("test_size debe estar entre 0 y 1.")
+    test_rows = math.ceil(len(data) * test_size)
+    train_rows = len(data) - test_rows
+    if train_rows < 1 or test_rows < 1:
+        raise ValueError("Se requieren ejemplos de entrenamiento y de prueba.")
+    train = data.iloc[:train_rows].copy()
+    test = data.iloc[train_rows:].copy()
+    if set(train["normalized_message"]) & set(test["normalized_message"]):
+        raise ValueError("Las particiones comparten mensajes.")
+    for target in ("category", "priority"):
+        if set(test[target]) - set(train[target]):
+            raise ValueError(f"Hay etiquetas de {target} en prueba ausentes del entrenamiento.")
+    return train, test
+
+
 def train_single_target(
     messages: pd.Series,
     labels: pd.Series,
     classes: tuple[str, ...],
     test_size: float = 0.2,
     random_state: int = 42,
+    test_messages: pd.Series | None = None,
+    test_labels: pd.Series | None = None,
 ) -> tuple[Pipeline, dict, str]:
-    """Entrena un clasificador con división estratificada y calcula métricas de evaluación."""
-    X_train, X_test, y_train, y_test = train_test_split(
-        messages,
-        labels,
-        test_size=test_size,
-        stratify=labels,
-        random_state=random_state,
-    )
+    """Entrena solo con la partición de entrenamiento y evalúa el holdout."""
+    if (test_messages is None) != (test_labels is None):
+        raise ValueError("Se requieren mensajes y etiquetas de prueba juntos.")
+    if test_messages is None:
+        # Compatibilidad para llamadas directas: la misma reserva final, sin sorteo.
+        count = math.ceil(len(messages) * test_size)
+        if not 0 < test_size < 1 or not 0 < count < len(messages):
+            raise ValueError("Partición de prueba inválida.")
+        X_train, X_test = messages.iloc[:-count], messages.iloc[-count:]
+        y_train, y_test = labels.iloc[:-count], labels.iloc[-count:]
+    else:
+        X_train, X_test = messages, test_messages
+        y_train, y_test = labels, test_labels
     model = build_pipeline(random_state=random_state)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
@@ -157,20 +183,25 @@ def train_models(
     data_file = Path(data_path)
     out_dir = Path(artifacts_dir)
     df = load_dataset(data_file)
+    train, test = split_dataset(df, test_size)
 
     category_model, category_metrics, category_report = train_single_target(
-        df["normalized_message"],
-        df["category"],
+        train["normalized_message"],
+        train["category"],
         CATEGORIES,
         test_size=test_size,
         random_state=random_state,
+        test_messages=test["normalized_message"],
+        test_labels=test["category"],
     )
     priority_model, priority_metrics, priority_report = train_single_target(
-        df["normalized_message"],
-        df["priority"],
+        train["normalized_message"],
+        train["priority"],
         PRIORITIES,
         test_size=test_size,
         random_state=random_state,
+        test_messages=test["normalized_message"],
+        test_labels=test["priority"],
     )
 
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -181,8 +212,17 @@ def train_models(
         "generated_at_utc": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "dataset_path": _relative_or_name(data_file),
         "dataset_rows": int(len(df)),
+        "dataset_sha256": hashlib.sha256(data_file.read_bytes()).hexdigest(),
         "test_size": test_size,
         "random_state": random_state,
+        "split": {
+            "method": "ordered_holdout",
+            "train_rows": len(train),
+            "test_rows": len(test),
+            "train_data_rows": [1, len(train)],
+            "test_data_rows": [len(train) + 1, len(df)],
+            "description": "Filas de datos, sin contar encabezado; ambas tareas usan las mismas particiones.",
+        },
         "versions": {
             "python": platform.python_version(),
             "pandas": pd.__version__,
@@ -223,7 +263,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--data", type=Path, default=DEFAULT_DATA_PATH, help="Ruta al CSV de entrenamiento.")
     parser.add_argument("--artifacts-dir", type=Path, default=DEFAULT_ARTIFACTS_DIR, help="Directorio de salida.")
     parser.add_argument("--test-size", type=float, default=0.2, help="Proporción para prueba (por defecto 0.2).")
-    parser.add_argument("--random-state", type=int, default=42, help="Semilla reproducible (por defecto 42).")
+    parser.add_argument("--random-state", type=int, default=42, help="Semilla del modelo; no altera la reserva final de prueba.")
     args = parser.parse_args(argv)
 
     result = train_models(
