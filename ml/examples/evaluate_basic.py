@@ -3,11 +3,11 @@ import sys
 from pathlib import Path
 
 import joblib
-import pandas as pd
 from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.model_selection import train_test_split
 
 ML_DIR = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ML_DIR.parent))
+from ml.src.train import load_dataset, split_dataset
 DEFAULT_DATA_PATH = ML_DIR / "data" / "tickets.csv"
 DEFAULT_MODEL_PATH = ML_DIR / "artifacts" / "basic_category_model.joblib"
 DEFAULT_MESSAGE = "Encontré datos de otros clientes"
@@ -29,15 +29,9 @@ def evaluate_basic(
         return 1
 
     model = joblib.load(model_file)
-    data = pd.read_csv(data_path, encoding="utf-8")
-
-    _X_train, X_test, _y_train, y_test = train_test_split(
-        data["message"],
-        data["category"],
-        test_size=0.2,
-        stratify=data["category"],
-        random_state=42,
-    )
+    data = load_dataset(data_path)
+    _training, testing = split_dataset(data)
+    X_test, y_test = testing["message"], testing["category"]
 
     predictions = model.predict(X_test)
     print("=== Reporte de clasificación ===")

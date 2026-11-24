@@ -48,6 +48,8 @@ En la ampliación ML (Parte 2), implementó `ml/src/predict.py` y `ml/src/app.py
 
 ## Estado
 
+Dataset vigente desde el 24 de noviembre de 2026: `ml/data/tickets.csv` contiene **200 ejemplos sintéticos**, sustituyendo los 280 anteriores. Las filas de datos 1–160 se usan para entrenar y las 161–200 quedan reservadas para prueba (sin contar el encabezado). El mismo reparto se utiliza en categoría, prioridad y los ejemplos básicos de Javier. Las evidencias fechadas anteriormente se conservan como resultados históricos del dataset anterior; no describen los modelos reentrenados con estos 200 ejemplos.
+
 - Motor tradicional por reglas, generativo mediante **Groq** y ML local mediante **FastAPI**, conectados a `POST /api/analyze`.
 - Modelo predeterminado: **`openai/gpt-oss-20b`**, con salida JSON Schema estricta y validación local del contrato.
 - Manejo de errores, cancelación por timeout, revisión humana ante indicios de seguridad y herramienta de evidencia para los 12 casos de referencia.
@@ -224,6 +226,8 @@ Cada porcentaje usa los doce casos, incluidos errores y formatos inválidos. Los
 
 ## Integración ML local
 
+Para usar el dataset vigente hay que reentrenar y reiniciar FastAPI. No se debe reutilizar un `.joblib` entrenado con los 280 ejemplos antiguos. Véanse los [comandos de entrenamiento y evaluación del dataset de 200](#dataset-de-200-y-ejemplos-de-javier).
+
 La arquitectura es híbrida: Node.js funciona como gateway y dueño del contrato; `src/ml.js` consulta por HTTP al servicio Python. FastAPI carga en memoria los dos pipelines de Javier y devuelve los cinco campos esperados. Los modos tradicional y ML pueden operar localmente sin una API externa durante la inferencia; el generativo sigue utilizando Groq.
 
 ```text
@@ -296,4 +300,28 @@ Fuentes: [ML real](evidence/ml-run-01.json), [gateway y FastAPI reales](evidence
 
 El servicio Python aplica un umbral fijo de confianza de categoría de 0.55: por debajo devuelve BUG/MEDIUM provisional con revisión humana. Node conserva esa salida y solo fuerza revisión si las reglas tradicionales detectan seguridad. Por ello, estos porcentajes evalúan el motor completo y no las etiquetas crudas de regresión logística. Los casos 2, 3, 11 y 12 quedaron incorrectos tras la regla provisional; el caso 5 falló en prioridad y el caso 4 difirió en revisión humana. No se ajustó el umbral ni el entrenamiento mirando estos doce casos.
 
-Las métricas de entrenamiento sobre 56 ejemplos de prueba (85.71% en categoría y 82.14% en prioridad) evalúan otro conjunto y cada objetivo por separado; no equivalen al 58.33% conjunto sobre estas doce referencias. Los datos sintéticos y la muestra pequeña limitan la generalización. Los porcentajes tampoco garantizan que el texto de respuesta sea verdadero o que todos los incidentes se detecten.
+Las métricas históricas del dataset de 280, sobre 56 ejemplos de prueba (85.71% en categoría y 82.14% en prioridad), evalúan otro conjunto y cada objetivo por separado; no equivalen al 58.33% conjunto sobre estas doce referencias. Los datos sintéticos y la muestra pequeña limitan la generalización. Los porcentajes tampoco garantizan que el texto de respuesta sea verdadero o que todos los incidentes se detecten.
+
+## Dataset de 200 y ejemplos de Javier
+
+El único CSV vigente es `ml/data/tickets.csv`, con columnas `message,category,priority`. No se agregan copias paralelas de entrenamiento y prueba: su orden fija la partición. Contiene 50 ejemplos de cada categoría; las primeras 160 filas tienen 40 por categoría y las últimas 40 tienen 10 por categoría. Hay 50 prioridades LOW, 60 MEDIUM, 65 HIGH y 25 CRITICAL, según el impacto descrito. Los mensajes no se repiten tras normalizarlos ni coinciden con los doce casos externos.
+
+No barajar ni ordenar el CSV antes de entrenar: las últimas 40 filas son el conjunto reservado y no deben participar en `fit`, en el ajuste del vocabulario ni en la selección de parámetros. `split_dataset()` comparte exactamente ese reparto entre los dos objetivos y los ejemplos de Javier. `--random-state` controla el modelo, no cambia las filas reservadas. Si se cambia `--test-size`, se cambia el límite de la reserva; mantener el valor predeterminado 0.2 para respetar 160/40.
+
+Desde la raíz del repositorio, con las dependencias de `ml/requirements.txt` instaladas:
+
+```powershell
+# Ejemplo básico de Javier: solo categoría; modelo separado del servicio.
+.\.venv\Scripts\python.exe ml/examples/train_basic.py
+.\.venv\Scripts\python.exe ml/examples/evaluate_basic.py
+
+# Dos clasificadores que utiliza el servicio FastAPI: categoría y prioridad.
+.\.venv\Scripts\python.exe ml/src/train.py
+.\.venv\Scripts\python.exe -m unittest discover -s ml/tests -v
+```
+
+Verificación del 24 de noviembre de 2026: **23 pruebas Python y 60 Node aprobadas**. El ejemplo básico de Javier logró 35/40 (87.5%) en categoría. Los pipelines del servicio lograron 36/40 (90%) en categoría y 36/40 (90%) en prioridad por separado; los reportes están en `ml/artifacts/metrics.json`, con hash del CSV, versiones y reparto. No son porcentajes de coincidencia conjunta ni de la API completa con la regla de confianza.
+
+Se mantiene el umbral de 0.55 del servicio. Por ejemplo, el mensaje de acceso no autorizado usado en la demostración obtiene categoría cruda SECURITY con confianza aproximada 0.3883 y la API devuelve BUG/MEDIUM provisional con revisión humana. Se documenta la incertidumbre y se conserva la revisión; no se ajustó el umbral para aumentar el resultado de prueba.
+
+El conjunto de 40 permite evaluar esta demostración sintética, no garantizar generalización real. Las evidencias anteriores no se reescriben; nuevas ejecuciones deben guardarse con otro nombre. Los `.joblib` y `.venv` permanecen fuera de Git. La integración de los scripts de Javier conserva su commit original `7faa431`; estos cambios ajustan su lectura al reparto fijo.
