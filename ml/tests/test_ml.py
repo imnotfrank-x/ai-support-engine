@@ -26,16 +26,15 @@ class TestMLPartOne(unittest.TestCase):
 
     def test_dataset_valid_and_balanced(self) -> None:
         df = load_dataset(DEFAULT_DATA_PATH)
-        self.assertGreaterEqual(len(df), 280)
+        self.assertEqual(len(df), 200)
         self.assertEqual(df["normalized_message"].nunique(), len(df))
 
         cat_counts = df["category"].value_counts().to_dict()
         for category in CATEGORIES:
-            self.assertGreaterEqual(cat_counts.get(category, 0), 70, f"Faltan ejemplos en {category}")
+            self.assertEqual(cat_counts.get(category, 0), 50, f"Cantidad incorrecta en {category}")
 
         pri_counts = df["priority"].value_counts().to_dict()
-        for priority in PRIORITIES:
-            self.assertGreaterEqual(pri_counts.get(priority, 0), 35, f"Faltan ejemplos en {priority}")
+        self.assertEqual(pri_counts, {"LOW": 50, "MEDIUM": 60, "HIGH": 65, "CRITICAL": 25})
 
     def test_no_data_leakage_with_reference_cases(self) -> None:
         df = load_dataset(DEFAULT_DATA_PATH)

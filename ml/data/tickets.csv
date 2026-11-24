@@ -1,281 +1,201 @@
-message,category,priority
-Mi usuario marca credenciales incorrectas al intentar iniciar sesión,ACCESS,MEDIUM
-No me llega el código de verificación en dos pasos para iniciar sesión,ACCESS,MEDIUM
-Se bloqueó mi cuenta personal después de tres intentos fallidos de acceso,ACCESS,MEDIUM
-Necesito restablecer mi contraseña porque caducó y no recuerdo la anterior,ACCESS,MEDIUM
-El enlace de recuperación de contraseña expiró antes de poder abrir mi cuenta,ACCESS,MEDIUM
-Me pide autenticar con MFA al entrar pero cambié de teléfono ayer,ACCESS,MEDIUM
-No puedo iniciar sesión con mi correo corporativo desde la aplicación móvil,ACCESS,MEDIUM
-El sistema rechaza mis credenciales personales al abrir el portal de acceso,ACCESS,MEDIUM
-Mi perfil de usuario quedó deshabilitado y no puedo iniciar sesión,ACCESS,MEDIUM
-La sesión se cierra apenas escribo mi usuario y contraseña en el login,ACCESS,MEDIUM
-Solicito desbloqueo de mi cuenta personal para iniciar sesión en ventas,ACCESS,MEDIUM
-No logro iniciar sesión con Google SSO usando mi cuenta individual,ACCESS,MEDIUM
-El código del autenticador MFA me marca inválido al iniciar sesión,ACCESS,MEDIUM
-Mi contraseña temporal ya no funciona para entrar a mi cuenta personal,ACCESS,MEDIUM
-Tengo permisos de acceso revocados en mi cuenta y no puedo iniciar sesión,ACCESS,MEDIUM
-Me aparece usuario no registrado al iniciar sesión con mis credenciales,ACCESS,MEDIUM
-No recibo el correo de recuperación de contraseña en mi bandeja personal,ACCESS,MEDIUM
-Mi cuenta individual muestra acceso denegado al validar mis credenciales,ACCESS,MEDIUM
-Al iniciar sesión desde mi laptop nueva el acceso queda bloqueado,ACCESS,MEDIUM
-Necesito renovar mi contraseña vencida para acceder al portal personal,ACCESS,MEDIUM
-Falla la validación de mi certificado de acceso al iniciar sesión,ACCESS,MEDIUM
-No puedo cambiar mi contraseña porque el sistema rechaza la clave actual,ACCESS,MEDIUM
-Se desvinculó mi autenticación biométrica y no logro entrar a mi cuenta,ACCESS,MEDIUM
-El login me pide aprobar el ingreso en un dispositivo antiguo sin acceso,ACCESS,MEDIUM
-Mi cuenta quedó suspendida por inactividad y requiero restablecer acceso,ACCESS,MEDIUM
-La VPN corporativa rechaza mis credenciales al intentar iniciar sesión,ACCESS,MEDIUM
-Tengo problemas para acceder a nómina con mi nueva contraseña personal,ACCESS,MEDIUM
-Me sale sesión expirada justo después de escribir usuario y contraseña,ACCESS,MEDIUM
-No funciona el botón de iniciar sesión con Microsoft en mi perfil,ACCESS,MEDIUM
-Mi correo institucional no recibe el PIN temporal para iniciar sesión,ACCESS,MEDIUM
-Requiero restablecer mi contraseña porque se bloqueó mi cuenta por intentos fallidos,ACCESS,MEDIUM
-No puedo entrar a mi cuenta desde Chrome por token de sesión inválido,ACCESS,MEDIUM
-Mi usuario nuevo aún no tiene acceso habilitado para iniciar sesión,ACCESS,MEDIUM
-Perdí mi aplicación de autenticación y necesito reiniciar mi código MFA,ACCESS,MEDIUM
-El formulario de login indica cuenta bloqueada temporalmente para mi usuario,ACCESS,MEDIUM
-Olvide el PIN de acceso y el sistema bloqueó mi inicio de sesión,ACCESS,MEDIUM
-Mi token personal de acceso expiró y no me permite autenticar mi perfil,ACCESS,MEDIUM
-El portal de login rechaza mi correo corporativo aunque la contraseña es correcta,ACCESS,MEDIUM
-No recibo el SMS de autenticación para confirmar mi inicio de sesión,ACCESS,MEDIUM
-Se cerró mi sesión activa y ahora no reconoce mis credenciales de acceso,ACCESS,MEDIUM
-Necesito ayuda para recuperar el acceso a mi cuenta personal de soporte,ACCESS,MEDIUM
-El enlace de restablecimiento de clave me marca token vencido al entrar,ACCESS,MEDIUM
-Mi cuenta de colaborador aparece inactiva en el portal de inicio de sesión,ACCESS,MEDIUM
-No puedo autenticar mi sesión con SSO porque marca usuario deshabilitado,ACCESS,MEDIUM
-Cambie mi contraseña hoy pero el login sigue pidiendo las credenciales anteriores,ACCESS,MEDIUM
-Ningún empleado de toda la empresa puede iniciar sesión desde esta mañana,ACCESS,HIGH
-Fallo masivo en el SSO corporativo bloquea el inicio de sesión de todos los usuarios,ACCESS,HIGH
-Toda la sucursal norte tiene las cuentas bloqueadas al intentar iniciar sesión,ACCESS,HIGH
-El servicio de autenticación rechaza las credenciales de toda la empresa,ACCESS,HIGH
-Todos los clientes reportan que no logran iniciar sesión en su cuenta hoy,ACCESS,HIGH
-Se cayó el proveedor de inicio de sesión y bloqueó el acceso a toda la organización,ACCESS,HIGH
-Bloqueo generalizado de cuentas impide iniciar sesión a todo el equipo operativo,ACCESS,HIGH
-El portal de acceso rechaza las credenciales de todos los usuarios de la empresa,ACCESS,HIGH
-Nadie en toda la compañía logra iniciar sesión con SSO corporativo,ACCESS,HIGH
-La integración de Active Directory dejó sin acceso de inicio de sesión a toda la empresa,ACCESS,HIGH
-Error masivo en tokens de autenticación impide entrar a todos los colaboradores,ACCESS,HIGH
-Toda el área administrativa tiene acceso denegado al iniciar sesión hoy,ACCESS,HIGH
-Falla global en el envío de códigos 2FA bloquea el ingreso de todos los usuarios,ACCESS,HIGH
-Todos los usuarios de la sede principal reciben rechazo de credenciales al entrar,ACCESS,HIGH
-El servidor de identidad rechaza el inicio de sesión para toda la organización,ACCESS,HIGH
-Ninguno de los agentes puede autenticar su cuenta desde la actualización de SSO,ACCESS,HIGH
-Todas las cuentas corporativas aparecen bloqueadas en el portal de inicio de sesión,ACCESS,HIGH
-Fallo general en la validación de contraseñas impide acceder a todo el personal,ACCESS,HIGH
-Todo el equipo comercial quedó fuera y nadie logra iniciar sesión en la plataforma,ACCESS,HIGH
-Se vencieron masivamente las sesiones y nadie en la empresa puede volver a entrar,ACCESS,HIGH
-El servicio de login con Microsoft falla para todos los empleados de la sucursal,ACCESS,HIGH
-Los códigos MFA marcan inválido para todos los usuarios al intentar iniciar sesión,ACCESS,HIGH
-Bloqueo masivo de acceso impide autenticarse a toda la plantilla de soporte,ACCESS,HIGH
-Nadie en el departamento de finanzas logra acceder por fallo general de credenciales,ACCESS,HIGH
-El inicio de sesión único dejó de aceptar cuentas para toda la organización,ACCESS,HIGH
-Al guardar un cliente nuevo la pantalla se queda cargando sin terminar,BUG,MEDIUM
-El botón de descargar factura en PDF no responde al hacer clic,BUG,MEDIUM
-Cuando filtro por fecha la tabla de pedidos muestra registros vacíos,BUG,MEDIUM
-La tabla de inventario duplica las filas al ordenar por precio,BUG,MEDIUM
-El formulario de registro borra los campos cuando selecciono una ciudad,BUG,MEDIUM
-La gráfica mensual de ventas muestra cantidades negativas por error de cálculo,BUG,MEDIUM
-El buscador interno arroja error 404 al escribir palabras con tilde,BUG,MEDIUM
-Al editar una dirección el formulario pierde el código postal guardado,BUG,MEDIUM
-La aplicación móvil se congela al adjuntar una fotografía en el reporte,BUG,MEDIUM
-El total del carrito calcula mal el impuesto cuando aplico un cupón,BUG,MEDIUM
-Los correos de confirmación salen con la plantilla HTML rota y desalineada,BUG,MEDIUM
-Al cambiar de pestaña en el perfil se cierra inesperadamente la vista,BUG,MEDIUM
-El paginador de la tabla siempre regresa a la primera página al avanzar,BUG,MEDIUM
-La exportación a Excel corta los ceros iniciales en los códigos postales,BUG,MEDIUM
-El selector de calendario marca un día anterior al que seleccioné,BUG,MEDIUM
-Al subir un archivo de dos megas el formulario lanza un fallo silencioso,BUG,MEDIUM
-La vista previa de impresión superpone el logotipo sobre la tabla,BUG,MEDIUM
-El contador de notificaciones no baja a cero después de abrir los avisos,BUG,MEDIUM
-Cuando elimino un registro de la tabla sigue visible hasta recargar,BUG,MEDIUM
-El módulo de cotizaciones falla con error de redondeo en los decimales,BUG,MEDIUM
-Al abrir el detalle de un pedido aparece error de referencia nula en pantalla,BUG,MEDIUM
-El botón de volver atrás dentro del asistente redirige a una página 404,BUG,MEDIUM
-La barra lateral se sobrepone sobre los botones en pantallas pequeñas,BUG,MEDIUM
-El formulario guarda dos veces la misma orden si hago clic rápido,BUG,MEDIUM
-Las fechas en los reportes exportados salen invertidas al cambiar idioma,BUG,MEDIUM
-El campo de teléfono rechaza guiones en el formulario aunque indica aceptarlos,BUG,MEDIUM
-Al cancelar una cita la vista sigue mostrando estado confirmado en la tabla,BUG,MEDIUM
-La carga de imágenes falla intermitentemente con error 502 en la galería,BUG,MEDIUM
-Cuando limpio los filtros la tabla no vuelve a mostrar todos los registros,BUG,MEDIUM
-El visor de documentos PDF muestra páginas en blanco en archivos escaneados,BUG,MEDIUM
-Al copiar un pedido anterior la pantalla omite las notas del cliente,BUG,MEDIUM
-La vista de detalle arroja excepción de JavaScript en la consola del navegador,BUG,MEDIUM
-El botón de guardar cambios permanece deshabilitado aunque llene el formulario,BUG,MEDIUM
-Al exportar el reporte semanal a CSV las columnas salen desordenadas,BUG,MEDIUM
-La pantalla de facturación se congela al seleccionar más de diez productos,BUG,MEDIUM
-El cálculo de descuentos aplica doble porcentaje en el resumen de compra,BUG,MEDIUM
-Cuando ordeno la tabla por fecha los registros quedan mezclados sin criterio,BUG,MEDIUM
-Al presionar el botón de imprimir recibo se cierra la ventana sin generar archivo,BUG,MEDIUM
-El filtro por estado ignora los tickets cerrados en la búsqueda de historial,BUG,MEDIUM
-La exportación a PDF omite los totales cuando la tabla supera dos páginas,BUG,MEDIUM
-El formulario de contacto no valida el correo y lanza error 500 al enviar,BUG,MEDIUM
-La gráfica de barras corta las etiquetas de los meses en la vista móvil,BUG,MEDIUM
-Al editar un producto guardado desaparece la imagen principal de la ficha,BUG,MEDIUM
-El botón de actualizar estado en pedidos no guarda el cambio en base de datos,BUG,MEDIUM
-La aplicación se cierra sola cada vez que abro el módulo de conciliación bancaria,BUG,MEDIUM
-El sistema completo en producción devuelve error 500 para todos los clientes,BUG,HIGH
-Caída total de la plataforma impide operar a toda la empresa ahora mismo,BUG,HIGH
-La base de datos principal dejó de responder y falló todo el sistema en producción,BUG,HIGH
-Todos los servicios del backend marcan error 503 de forma generalizada,BUG,HIGH
-La página web principal está caída para todos los usuarios desde hace veinte minutos,BUG,HIGH
-Ningún módulo de facturación funciona en producción para toda la organización,BUG,HIGH
-Fallo crítico en el servidor de pagos detuvo todas las compras en producción,BUG,HIGH
-Toda la aplicación web muestra pantalla en blanco tras el despliegue de hoy,BUG,HIGH
-Falla generalizada en la API de pedidos afecta a todas las sucursales,BUG,HIGH
-El sistema de envíos colapsó en producción y nadie puede generar guías,BUG,HIGH
-Se cayó el servidor principal y ninguna tienda logra cobrar ventas en producción,BUG,HIGH
-Todos los clientes ven error interno 500 al intentar confirmar el carrito,BUG,HIGH
-Interrupción total del servicio web mantiene detenida a toda la compañía,BUG,HIGH
-El microservicio de inventario falla en producción para todos los usuarios,BUG,HIGH
-Caída masiva del sistema de tickets deja inoperante a toda el área de soporte,BUG,HIGH
-Toda la plataforma de comercio está caída y devuelve error 502 a los clientes,BUG,HIGH
-El servidor de base de datos colapsó y ninguna sucursal puede registrar ventas,BUG,HIGH
-Error generalizado en producción detuvo la emisión de facturas para toda la empresa,BUG,HIGH
-Caída total de la API principal bloquea las operaciones de todo el sistema,BUG,HIGH
-Todos los módulos del portal muestran error 500 de manera continua en producción,BUG,HIGH
-El sistema central quedó completamente inaccesible para todas las tiendas,BUG,HIGH
-Falla masiva en el servidor web provoca caída generalizada del servicio,BUG,HIGH
-Ninguna aplicación del negocio responde tras la caída del clúster en producción,BUG,HIGH
-El procesador de pagos en producción arroja error 503 a todos los compradores,BUG,HIGH
-Interrupción crítica del backend mantiene sin operación a toda la organización,BUG,HIGH
-Me gustaría tener un filtro avanzado por rango de montos en los reportes,FEATURE,LOW
-Sería útil agregar exportación directa a formato CSV desde la tabla de clientes,FEATURE,LOW
-Queremos integrar un botón para compartir comprobantes por correo automático,FEATURE,LOW
-Propongo incluir atajos de teclado para navegar más rápido entre vistas,FEATURE,LOW
-Nos ayudaría contar con recordatorios automáticos tres días antes del vencimiento,FEATURE,LOW
-Quisiera personalizar las columnas visibles dentro del tablero principal,FEATURE,LOW
-Necesitamos soporte para subir múltiples archivos adjuntos al mismo tiempo,FEATURE,LOW
-Sería bueno añadir un historial de cambios por cada registro editado,FEATURE,LOW
-Solicito agregar tema de alto contraste para mejorar la lectura en oficina,FEATURE,LOW
-Queremos conectar la plataforma con Slack para recibir avisos de tareas,FEATURE,LOW
-Me gustaría poder guardar búsquedas frecuentes como vistas favoritas,FEATURE,LOW
-Podrían implementar firma electrónica dentro del flujo de aprobación,FEATURE,LOW
-Necesitamos generar códigos QR en las etiquetas de cada envío,FEATURE,LOW
-Quisiera programar el envío semanal de resúmenes ejecutivos por correo,FEATURE,LOW
-Sería práctico tener autocompletado al buscar nombres de proveedores,FEATURE,LOW
-Nos gustaría agregar comentarios internos visibles solo para supervisores,FEATURE,LOW
-Propongo incluir un calendario mensual para visualizar entregas pendientes,FEATURE,LOW
-Quisiéramos un indicador de progreso al importar catálogos grandes,FEATURE,LOW
-Sería ideal integrar mapas interactivos para ubicar cada sucursal,FEATURE,LOW
-Solicito una opción para duplicar plantillas de cotización existentes,FEATURE,LOW
-Queremos agregar soporte multiidioma para atender clientes en inglés,FEATURE,LOW
-Nos serviría una papelera de reciclaje para restaurar registros borrados,FEATURE,LOW
-Me gustaría poder arrastrar y soltar tarjetas entre columnas del tablero,FEATURE,LOW
-Podrían añadir validación automática de RFC al dar de alta clientes,FEATURE,LOW
-Necesitamos un endpoint público para consultar el estado de los pedidos,FEATURE,LOW
-Quisiera recibir alertas sonoras opcionales cuando llegue un ticket urgente,FEATURE,LOW
-Sería útil mostrar gráficas comparativas del trimestre actual contra el pasado,FEATURE,LOW
-Propongo agregar etiquetas de colores para organizar mejor los proyectos,FEATURE,LOW
-Queremos integrar pagos mediante transferencia SPEI con conciliación automática,FEATURE,LOW
-Nos gustaría contar con un modo compacto para ver más filas en pantalla,FEATURE,LOW
-Solicito habilitar la descarga masiva de facturas en un solo archivo ZIP,FEATURE,LOW
-Sería genial poder mencionar compañeros con arroba dentro de las notas,FEATURE,LOW
-Quisiera un asistente guiado para configurar cuentas nuevas paso a paso,FEATURE,LOW
-Necesitamos un reporte de productividad semanal por cada agente asignado,FEATURE,LOW
-Podrían incluir vista previa rápida al pasar el cursor sobre documentos,FEATURE,LOW
-Me gustaría poder fijar avisos importantes en la parte superior del muro,FEATURE,LOW
-Queremos añadir campos personalizados en el formulario de registro de leads,FEATURE,LOW
-Sería útil contar con respaldo automático diario descargable desde ajustes,FEATURE,LOW
-Propongo integrar autenticación con llave física FIDO2 en futuras versiones,FEATURE,LOW
-Nos gustaría tener un widget de chat interno entre ventas y almacén,FEATURE,LOW
-Solicito agregar ordenamiento múltiple por prioridad y fecha de creación,FEATURE,LOW
-Quisiera poder pausar temporalmente las notificaciones durante mi comida,FEATURE,LOW
-Sería práctico convertir cualquier correo recibido en una tarea con un clic,FEATURE,LOW
-Necesitamos calcular automáticamente el margen de ganancia en cada cotización,FEATURE,LOW
-Podrían agregar un glosario de ayuda contextual en formularios complejos,FEATURE,LOW
-Queremos mostrar una insignia de cliente frecuente en su ficha de perfil,FEATURE,LOW
-Me gustaría exportar las gráficas del tablero directamente como imagen PNG,FEATURE,LOW
-Sería bueno tener plantillas predefinidas para respuestas rápidas de soporte,FEATURE,LOW
-Solicito compatibilidad con lectores de pantalla para mejorar accesibilidad,FEATURE,LOW
-Nos ayudaría incluir un simulador de costos antes de confirmar pedidos grandes,FEATURE,LOW
-Queremos agregar integración con Google Calendar para agendar citas automáticas,FEATURE,LOW
-Me gustaría habilitar alertas por Telegram cuando cambie el estado de un envío,FEATURE,LOW
-Propongo incluir una barra de búsqueda global accesible desde cualquier pantalla,FEATURE,LOW
-Sería útil agregar filtros guardados por equipo dentro del panel de reportes,FEATURE,LOW
-Necesitamos exportar la lista de inventario con imágenes incluidas en PDF,FEATURE,LOW
-Quisiera personalizar los colores del encabezado con el logotipo de la marca,FEATURE,LOW
-Podrían añadir un botón para clonar campañas anteriores con un solo clic,FEATURE,LOW
-Nos gustaría contar con programación automática de tareas recurrentes mensuales,FEATURE,LOW
-Solicito agregar vista tipo lista además de la vista de tarjetas actual,FEATURE,LOW
-Sería práctico integrar firma digital con código QR en las constancias,FEATURE,LOW
-Queremos incluir un comparador lado a lado entre dos versiones de cotización,FEATURE,LOW
-Me gustaría poder archivar proyectos terminados sin eliminar su historial,FEATURE,LOW
-Propongo agregar estadísticas de tiempo promedio de atención por categoría,FEATURE,LOW
-Necesitamos soporte para importar contactos directamente desde archivos vCard,FEATURE,LOW
-Quisiera habilitar notificaciones push en escritorio para avisos importantes,FEATURE,LOW
-Sería bueno añadir etiquetas automáticas según el tipo de cliente registrado,FEATURE,LOW
-Podrían implementar un modo lectura sin distracciones para revisar reportes largos,FEATURE,LOW
-Nos gustaría conectar el catálogo con MercadoLibre para sincronizar existencias,FEATURE,LOW
-Solicito agregar vista semanal y diaria en el módulo de agenda compartida,FEATURE,LOW
-Queremos incluir un generador automático de folios personalizados por sucursal,FEATURE,LOW
-Detectamos una vulnerabilidad XSS reflejada en el parámetro de búsqueda,SECURITY,HIGH
-Hay claves privadas de AWS expuestas en un archivo público del repositorio,SECURITY,HIGH
-Existe una falla IDOR que permite ver facturas ajenas cambiando el ID en la URL,SECURITY,HIGH
-Encontramos tokens de sesión expuestos en texto plano dentro de los logs,SECURITY,HIGH
-Un formulario carece de protección CSRF y permite cambiar datos del usuario,SECURITY,HIGH
-Recibimos correos de phishing suplantando el dominio oficial de nuestra empresa,SECURITY,HIGH
-Un bucket de almacenamiento quedó con permisos públicos de lectura por error,SECURITY,HIGH
-Las contraseñas en pruebas se guardan en texto plano sin algoritmo de hash,SECURITY,HIGH
-El panel administrativo no valida roles y cualquier usuario abre rutas privadas,SECURITY,HIGH
-El servidor web acepta protocolos TLS obsoletos vulnerables a descifrado,SECURITY,HIGH
-Detectamos una vulnerabilidad path traversal que permite leer archivos internos,SECURITY,HIGH
-Credenciales de base de datos quedaron expuestas en un archivo del repositorio,SECURITY,HIGH
-Una librería del proyecto tiene una vulnerabilidad crítica de ejecución remota,SECURITY,HIGH
-El módulo de carga permite subir scripts ejecutables vulnerables en el servidor,SECURITY,HIGH
-Encontramos llaves API de producción expuestas directamente en el código fuente,SECURITY,HIGH
-Los tokens JWT no se invalidan al cerrar sesión y siguen siendo vulnerables,SECURITY,HIGH
-Una falla IDOR expone datos fiscales de terceros manipulando el número de folio,SECURITY,HIGH
-Falta la cabecera Content Security Policy y permite inyectar scripts XSS,SECURITY,HIGH
-Reportaron mensajes de phishing con enlaces falsos pidiendo claves de empleados,SECURITY,HIGH
-Las cabeceras HTTP exponen versiones internas vulnerables del servidor web,SECURITY,HIGH
-El login carece de límite de intentos y es vulnerable a fuerza bruta,SECURITY,HIGH
-Se hallaron secretos OAuth expuestos en el código JavaScript del navegador,SECURITY,HIGH
-La consola de depuración quedó expuesta en público mostrando credenciales de entorno,SECURITY,HIGH
-Un enlace de recuperación usa un token predecible vulnerable a enumeración,SECURITY,HIGH
-Archivo de respaldo accesible por web expone credenciales y configuración sensible,SECURITY,HIGH
-Reportamos posible inyección SQL en el campo de búsqueda avanzada de clientes,SECURITY,HIGH
-Un parámetro de la API es vulnerable a inyección SQL sin sanitización previa,SECURITY,HIGH
-Tokens de acceso quedaron expuestos en capturas subidas al repositorio interno,SECURITY,HIGH
-Detectamos correos fraudulentos de phishing dirigidos al área de contabilidad,SECURITY,HIGH
-El servidor de archivos expone directorios sensibles por permisos mal configurados,SECURITY,HIGH
-Una vulnerabilidad XSS almacenada permite ejecutar código en comentarios públicos,SECURITY,HIGH
-Llaves secretas de webhooks quedaron expuestas en un historial público de Git,SECURITY,HIGH
-El endpoint administrativo omite verificación CSRF en acciones sensibles de cuenta,SECURITY,HIGH
-Los permisos del almacenamiento en la nube dejaron expuestos documentos de clientes,SECURITY,HIGH
-Se identificó una vulnerabilidad de escalación de privilegios en el perfil de usuario,SECURITY,HIGH
-Un ataque de ransomware cifró los archivos compartidos del servidor de contabilidad,SECURITY,CRITICAL
-Detectamos acceso no autorizado en la cuenta de administrador creando usuarios ahora mismo,SECURITY,CRITICAL
-Alguien entró sin autorización a la base de datos y está extrayendo registros de clientes,SECURITY,CRITICAL
-Secuestraron la sesión de un gerente y realizan transferencias no autorizadas ahora mismo,SECURITY,CRITICAL
-Hay extracción activa de información confidencial hacia una IP externa desconocida,SECURITY,CRITICAL
-Un atacante activo ejecuta comandos remotos sin autorización en el servidor principal,SECURITY,CRITICAL
-Los servidores muestran nota de rescate de ransomware exigiendo pago para descifrar archivos,SECURITY,CRITICAL
-Se confirmó robo masivo de datos personales con extracción activa desde el portal,SECURITY,CRITICAL
-Alguien entró sin permiso a mi cuenta administrativa y cambió las credenciales de acceso,SECURITY,CRITICAL
-Detectamos malware activo exfiltrando archivos financieros desde dos servidores internos,SECURITY,CRITICAL
-Un intruso con acceso no autorizado borró bitácoras de auditoría en el servidor,SECURITY,CRITICAL
-Están extrayendo registros de tarjetas en vivo mediante una cuenta comprometida,SECURITY,CRITICAL
-Confirmamos brecha activa con robo de expedientes médicos hacia servidor externo,SECURITY,CRITICAL
-Un atacante externo entró sin autorización al panel administrativo y desactivó alertas,SECURITY,CRITICAL
-El servidor de archivos sufrió ransomware cifrador que bloqueó todas las carpetas,SECURITY,CRITICAL
-Detectamos tráfico saliente anómalo con extracción activa de respaldos de base de datos,SECURITY,CRITICAL
-Alguien secuestró la cuenta principal de la nube y está lanzando máquinas sin autorización,SECURITY,CRITICAL
-Se detectó acceso remoto no autorizado ejecutando malware activo en tiempo real,SECURITY,CRITICAL
-Comprometieron el servidor de correo y envían estafas desde nuestra cuenta oficial ahora,SECURITY,CRITICAL
-Confirmamos intrusión activa en el servidor de pagos capturando transacciones en curso,SECURITY,CRITICAL
-Hay una sesión no autorizada descargando toda la base de clientes en este momento,SECURITY,CRITICAL
-Un ransomware bloqueó los discos compartidos de nómina y dejó nota de rescate,SECURITY,CRITICAL
-Alguien entró sin permiso a producción y modificó los webhooks para desviar cobros,SECURITY,CRITICAL
-Sufrimos fuga activa de documentos legales hacia una dirección externa desconocida,SECURITY,CRITICAL
-Se confirmó secuestro de cuentas administrativas con acceso no autorizado a datos privados,SECURITY,CRITICAL
-Un intruso accedió sin autorización al servidor Linux y abrió una puerta trasera activa,SECURITY,CRITICAL
-Detectamos robo activo de llaves criptográficas desde una sesión comprometida en vivo,SECURITY,CRITICAL
-Malware tipo ransomware está cifrando carpetas en red de la sucursal central ahora mismo,SECURITY,CRITICAL
-Un usuario no autorizado obtuvo privilegios root y extrae respaldos confidenciales,SECURITY,CRITICAL
-Se observa exfiltración activa de la tabla de usuarios hacia un servidor externo,SECURITY,CRITICAL
-Alguien ingresó sin autorización a la cuenta de tesorería e inició retiros en curso,SECURITY,CRITICAL
-Confirmamos acceso no autorizado persistente con ejecución de malware en el clúster,SECURITY,CRITICAL
-Atacantes comprometieron cuentas de soporte y extraen información privada en tiempo real,SECURITY,CRITICAL
-El servidor de respaldos fue cifrado por ransomware y exige rescate en criptomonedas,SECURITY,CRITICAL
-Detectamos conexión no autorizada activa descargando expedientes completos de clientes,SECURITY,CRITICAL
+"message","category","priority"
+"Un filtro por estado deja de aplicarse cuando ordeno la lista por el nombre del cliente.","BUG","MEDIUM"
+"El botón para quitar una etiqueta no responde dentro del editor de una nota individual.","BUG","MEDIUM"
+"El servicio acepta conexiones con una versión de cifrado obsoleta que no cumple la política de protección vigente.","SECURITY","HIGH"
+"En mi navegador el selector de fechas salta al mes anterior al intentar elegir el último día del período.","BUG","MEDIUM"
+"Solicitamos un catálogo de respuestas frecuentes para agilizar la atención de consultas repetidas.","FEATURE","LOW"
+"El enlace enviado para verificar mi correo abre una página que indica que el token caducó.","ACCESS","MEDIUM"
+"La vista de impresión de mi orden añade una página en blanco al final del documento.","BUG","MEDIUM"
+"Sería útil agregar un campo de observaciones internas que no se incluya en el documento enviado al cliente.","FEATURE","LOW"
+"El sistema me pide confirmar la identidad con un correo corporativo al que ya no tengo acceso.","ACCESS","MEDIUM"
+"El acceso federado dejó de reconocer a todos los empleados y no existe un método local habilitado para ingresar.","ACCESS","HIGH"
+"El asistente de carga de un archivo de prueba deja el progreso en noventa por ciento y no termina.","BUG","MEDIUM"
+"El cierre de sesión no invalida el token anterior y una revisión de seguridad confirmó que puede reutilizarse.","SECURITY","HIGH"
+"La sincronización del directorio retiró los permisos de entrada de toda una sede que quedó sin acceso al sistema.","ACCESS","HIGH"
+"La conciliación masiva está anulando transacciones válidas de toda la operación y el proceso permanece suspendido.","BUG","HIGH"
+"Queremos una opción para programar el envío semanal de un resumen de actividad por correo.","FEATURE","LOW"
+"El portal cerró las sesiones de todo el personal y ahora nadie logra volver a identificarse.","ACCESS","HIGH"
+"Me gustaría poder fijar una nota informativa en la parte superior de cada proyecto.","FEATURE","LOW"
+"Al editar una tarea la aplicación conserva el título pero descarta el cambio de fecha que acabo de guardar.","BUG","MEDIUM"
+"La vista previa de una imagen adjunta aparece girada aunque el archivo descargado conserva la orientación.","BUG","MEDIUM"
+"Propongo agregar una lista de verificación reutilizable para las actividades de apertura de sucursal.","FEATURE","LOW"
+"Proponemos añadir una columna con la antigüedad de cada solicitud en el tablero de atención.","FEATURE","LOW"
+"La invitación para activar mi perfil llegó después de su fecha de validez y necesito otra.","ACCESS","MEDIUM"
+"Los usuarios de todas las sedes reciben rechazo del segundo factor y el acceso a producción está bloqueado para la empresa.","ACCESS","HIGH"
+"El contador de comentarios de una ficha muestra cinco aunque solamente hay cuatro mensajes visibles.","BUG","MEDIUM"
+"El equipo de monitoreo confirma que un intruso está descargando la base de clientes desde una sesión administrativa no autorizada.","SECURITY","CRITICAL"
+"Solicitamos incorporar una vista de mapa con la ubicación aproximada de las sucursales.","FEATURE","LOW"
+"El proveedor SSO niega el acceso a toda la plantilla después de cambiar el dominio de la empresa.","ACCESS","HIGH"
+"La actualización del esquema de datos dejó sin lectura a todos los tableros operativos usados por las sucursales.","BUG","HIGH"
+"Los registros confirman que un tercero utiliza una clave robada para consultar información interna en este momento.","SECURITY","CRITICAL"
+"Un proceso de origen malicioso está cifrando las bases operativas y dejó una nota de rescate en los servidores.","SECURITY","CRITICAL"
+"Mi usuario no consigue ingresar porque la dirección de correo fue registrada con una letra incorrecta.","ACCESS","MEDIUM"
+"Los accesos de todos los responsables de almacén caducaron al mismo tiempo y no pueden entrar a registrar movimientos.","ACCESS","HIGH"
+"Una gráfica de mi panel presenta valores del día anterior aunque actualice manualmente la vista.","BUG","MEDIUM"
+"Solicitamos un modo de lectura que oculte las herramientas de edición al revisar documentos extensos.","FEATURE","LOW"
+"La llave física de autenticación de mi perfil dejó de reconocerse y necesito registrar una de reemplazo.","ACCESS","MEDIUM"
+"La validación de un campo telefónico rechaza un número permitido en un registro individual.","BUG","MEDIUM"
+"Al pegar texto en una observación el editor pierde los saltos de línea del contenido original.","BUG","MEDIUM"
+"Se detectó una intrusión activa que está publicando expedientes privados mediante enlaces creados sin permiso.","SECURITY","CRITICAL"
+"Me gustaría disponer de una función para copiar la estructura de un proyecto sin copiar sus datos.","FEATURE","LOW"
+"La pantalla de preferencias no conserva el idioma seleccionado después de guardar mi perfil.","BUG","MEDIUM"
+"La generación de comprobantes falla para toda la empresa y bloquea la entrega de mercancía.","BUG","HIGH"
+"Mi cuenta conserva el apellido anterior y el proveedor de identidad no la vincula con mi nuevo correo.","ACCESS","MEDIUM"
+"La renovación obligatoria de contraseña bloqueó a todos los supervisores y el equipo entero no puede operar.","ACCESS","HIGH"
+"La aplicación se cierra en todas las terminales al cargar la pantalla principal y no permite trabajar.","BUG","HIGH"
+"Las cuentas de todos los cajeros aparecen deshabilitadas y las sucursales no pueden acceder al sistema de cobro.","ACCESS","HIGH"
+"Un informe guardado por mi usuario pierde el filtro de sucursal al abrirlo nuevamente.","BUG","MEDIUM"
+"Se reportó que el formulario de cambio de correo no verifica el origen de la petición y permite solicitudes falsificadas.","SECURITY","HIGH"
+"Me gustaría poder marcar documentos como favoritos para encontrarlos desde una lista personal.","FEATURE","LOW"
+"Mi usuario quedó suspendido tras varios intentos equivocados y requiero que lo habiliten.","ACCESS","MEDIUM"
+"El servicio central de archivos dejó de responder y ningún departamento puede consultar los documentos de trabajo.","BUG","HIGH"
+"La programación central de rutas asigna el mismo vehículo a todos los repartos y detuvo la salida de la flota.","BUG","HIGH"
+"Solicito agregar un selector de zona horaria a las preferencias del calendario compartido.","FEATURE","LOW"
+"Mi cuenta está desactivada por inactividad y debo reactivarla para volver a utilizar el portal.","ACCESS","MEDIUM"
+"Puedo identificarme en la intranet pero mi perfil todavía no tiene permiso para entrar al módulo de compras.","ACCESS","MEDIUM"
+"El buscador de contactos devuelve resultados de la página anterior después de cambiar el término consultado.","BUG","MEDIUM"
+"La aplicación duplica visualmente una fila de mi borrador pero al volver a abrirlo solo existe un registro.","BUG","MEDIUM"
+"Ninguna cuenta corporativa logra obtener el token de acceso necesario para entrar al portal de operaciones.","ACCESS","HIGH"
+"Un ransomware está cifrando en este momento los archivos compartidos de la empresa y exige detener la propagación.","SECURITY","CRITICAL"
+"Ninguna sucursal puede guardar ventas porque el servicio de base de datos de producción dejó de responder.","BUG","HIGH"
+"Una sesión ajena al personal autorizado está desactivando las bitácoras de seguridad de producción.","SECURITY","CRITICAL"
+"La versión desplegada impide abrir cualquier expediente en producción y todos los equipos están paralizados.","BUG","HIGH"
+"La opción de deshacer elimina dos cambios de una nota cuando debería revertir solo el último.","BUG","MEDIUM"
+"Nos gustaría disponer de una vista de calendario para organizar las fechas de mantenimiento preventivo.","FEATURE","LOW"
+"Descubrimos que el enlace de una factura puede consultarse sin autenticación y deja visible información del cliente.","SECURITY","HIGH"
+"Solo mi perfil recibe acceso denegado al consultar el panel al que acaba de asignarme mi supervisor.","ACCESS","MEDIUM"
+"El cálculo de impuestos está generando importes incorrectos en todas las facturas emitidas en producción.","BUG","HIGH"
+"El archivo descargado de una ficha individual contiene signos extraños en los nombres con acentos.","BUG","MEDIUM"
+"Queremos configurar recordatorios de mantenimiento con varios días de anticipación.","FEATURE","LOW"
+"La última actualización duplica todos los pagos confirmados y la operación de cobro está detenida.","BUG","HIGH"
+"El sistema registra transferencias no autorizadas realizadas ahora desde credenciales de tesorería comprometidas.","SECURITY","CRITICAL"
+"El sistema de turnos perdió la conexión con todas las pantallas de atención y suspendió el servicio en las sedes.","BUG","HIGH"
+"Me gustaría que el sistema ofreciera una opción para archivar proyectos ya finalizados.","FEATURE","LOW"
+"Una revisión de permisos encontró que un rol de consulta puede modificar la configuración administrativa.","SECURITY","HIGH"
+"Queremos una función para establecer metas mensuales y mostrar su avance en el panel.","FEATURE","LOW"
+"La supervisión confirma actividad de un intruso que reemplaza archivos del sitio público para distribuir malware.","SECURITY","CRITICAL"
+"La política de cookies permite acceso desde scripts a una sesión administrativa y requiere corrección preventiva.","SECURITY","HIGH"
+"La herramienta de análisis detectó una dependencia vulnerable expuesta en un endpoint público y requiere evaluación.","SECURITY","HIGH"
+"Una prueba autorizada mostró que el servidor permite consultar archivos fuera de la carpeta publicada mediante una ruta manipulada.","SECURITY","HIGH"
+"El acceso de mi usuario termina en una solicitud de segundo factor que no configuré durante el alta.","ACCESS","MEDIUM"
+"Solicito incorporar un filtro por rango de importe en la consulta de órdenes históricas.","FEATURE","LOW"
+"El inicio de sesión corporativo está rechazando a todo el personal y no hay una vía alternativa de ingreso.","ACCESS","HIGH"
+"La auditoría encontró que los tokens de recuperación siguen siendo válidos después de cambiar la contraseña de una cuenta.","SECURITY","HIGH"
+"Propongo agregar una opción para organizar los contactos en grupos definidos por el equipo.","FEATURE","LOW"
+"El directorio corporativo no valida las credenciales de ningún operador y el turno completo quedó fuera de la aplicación.","ACCESS","HIGH"
+"Mi cuenta solicita un código del autenticador que ya no puedo generar tras perder el dispositivo.","ACCESS","MEDIUM"
+"El inicio de sesión de mi perfil falla porque el certificado personal que utilizaba para autenticarme venció.","ACCESS","MEDIUM"
+"Proponemos una función para agrupar órdenes por proyecto sin cambiar su numeración actual.","FEATURE","LOW"
+"Un repositorio de ejemplo contiene una clave de integración vigente que necesita ser revocada por el equipo de seguridad.","SECURITY","HIGH"
+"El sistema de inventario de producción rechaza todos los movimientos de entrada y salida en cada almacén.","BUG","HIGH"
+"No puedo completar la verificación de mi cuenta porque el mensaje SMS se envía a un número antiguo.","ACCESS","MEDIUM"
+"Sugiero permitir etiquetas de color personalizadas para organizar las solicitudes del equipo.","FEATURE","LOW"
+"El portal no limita los intentos de autenticación y una revisión identificó exposición a pruebas masivas de contraseñas.","SECURITY","HIGH"
+"Sería útil permitir que una tarea dependa de la finalización de otra dentro del mismo proyecto.","FEATURE","LOW"
+"El acceso de mi usuario exige renovar una clave vencida y no encuentro el formulario correspondiente.","ACCESS","MEDIUM"
+"Hay evidencia de que un programa malicioso está enviando documentos confidenciales desde varios servidores corporativos.","SECURITY","CRITICAL"
+"Solicitamos una vista que reúna los contratos próximos a vencer durante el mes.","FEATURE","LOW"
+"Queremos incorporar una opción para comparar dos versiones de un documento antes de aprobarlo.","FEATURE","LOW"
+"Al autenticar mi cuenta el portal solicita aceptar una invitación que no aparece en mi bandeja.","ACCESS","MEDIUM"
+"Nos ayudaría una función para asignar varias tareas a un mismo responsable desde una selección conjunta.","FEATURE","LOW"
+"Una revisión encontró una contraseña de base de datos escrita en un archivo público de configuración y debe retirarse.","SECURITY","HIGH"
+"El módulo de despacho de producción elimina las líneas de todos los envíos al confirmar la salida.","BUG","HIGH"
+"El formulario borra el valor de una dirección cuando modifico el código postal en mi borrador.","BUG","MEDIUM"
+"El reproductor de un tutorial interno no recupera el sonido al salir del modo de pantalla completa.","BUG","MEDIUM"
+"El monitoreo confirma que están borrando respaldos desde una cuenta comprometida que sigue conectada.","SECURITY","CRITICAL"
+"Al elegir mi organización el inicio de sesión indica que mi usuario no pertenece a ella.","ACCESS","MEDIUM"
+"Identificamos una ruta de consulta que no comprueba el permiso sobre el registro solicitado y podría exponer información ajena.","SECURITY","HIGH"
+"Sería útil agregar una vista de línea de tiempo para los hitos de los proyectos.","FEATURE","LOW"
+"La aplicación muestra la hora de una cita personal desplazada una hora respecto al calendario original.","BUG","MEDIUM"
+"Todos los agentes del centro de atención quedaron fuera del panel porque sus cuentas perdieron el permiso de entrada.","ACCESS","HIGH"
+"Los enlaces de descarga de documentos privados no caducan y pueden seguir usándose después de retirar el permiso.","SECURITY","HIGH"
+"Solicito permitir la carga de una fotografía de referencia en cada ficha de producto.","FEATURE","LOW"
+"Detectamos que una copia de respaldo con información interna tiene permisos de lectura abiertos a usuarios no previstos.","SECURITY","HIGH"
+"Queremos agregar un campo opcional para indicar el canal por el que llegó cada solicitud.","FEATURE","LOW"
+"Necesito restablecer los códigos de respaldo de mi cuenta antes de poder autenticarme de nuevo.","ACCESS","MEDIUM"
+"Sugiero incluir un resumen de consumo de almacenamiento por carpeta en el panel administrativo.","FEATURE","LOW"
+"El portal devuelve error interno a todos los compradores cuando intentan finalizar cualquier compra.","BUG","HIGH"
+"Proponemos incorporar una búsqueda por texto dentro de los archivos adjuntos del repositorio.","FEATURE","LOW"
+"Los movimientos de todas las cajas se guardan con fecha incorrecta y fue necesario detener el cierre operativo.","BUG","HIGH"
+"Necesito cambiar la pregunta de recuperación de mi perfil porque no puedo validar la respuesta guardada.","ACCESS","MEDIUM"
+"Un tercero ingresó con una sesión sustraída y está eliminando registros de auditoría para ocultar sus acciones.","SECURITY","CRITICAL"
+"El equipo de seguridad detectó que una clave expuesta está siendo utilizada para extraer secretos del almacén corporativo.","SECURITY","CRITICAL"
+"Necesito recuperar el acceso a mi perfil porque cambié el correo de recuperación.","ACCESS","MEDIUM"
+"Un usuario intruso tomó el control del panel de administración y está cambiando los permisos de las cuentas legítimas.","SECURITY","CRITICAL"
+"Nos gustaría poder guardar combinaciones de filtros con un nombre elegido por cada usuario.","FEATURE","LOW"
+"Propongo agregar un campo para registrar el nombre preferido del contacto en las fichas comerciales.","FEATURE","LOW"
+"Sería conveniente permitir que los responsables suscriban categorías específicas de avisos internos.","FEATURE","LOW"
+"El portal reconoce mi correo pero rechaza la contraseña provisional que recibí al incorporarme.","ACCESS","MEDIUM"
+"Los registros de diagnóstico incluyen códigos de segundo factor que no deberían almacenarse en texto legible.","SECURITY","HIGH"
+"Sería conveniente agregar un historial visible de los cambios aprobados en un presupuesto.","FEATURE","LOW"
+"La suma presentada en un presupuesto de prueba omite una partida que sí aparece en el detalle.","BUG","MEDIUM"
+"Todos los trabajadores remotos tienen el perfil de autenticación deshabilitado y no pueden entrar al entorno de trabajo.","ACCESS","HIGH"
+"Nos gustaría contar con una vista previa del tamaño de los archivos antes de descargarlos.","FEATURE","LOW"
+"Detectamos una intrusión que está alterando órdenes de compra y enviando sus datos a un servidor externo.","SECURITY","CRITICAL"
+"Detectamos que una cuenta administrativa comprometida está creando usuarios nuevos para mantener acceso al sistema.","SECURITY","CRITICAL"
+"Se confirmó que una identidad externa controla una cuenta privilegiada y está instalando herramientas de acceso remoto.","SECURITY","CRITICAL"
+"Se observa una extracción activa de documentos privados hacia un destino externo sin autorización del propietario.","SECURITY","CRITICAL"
+"Las cuentas del turno nocturno fueron bloqueadas en conjunto y ningún operador puede iniciar su jornada.","ACCESS","HIGH"
+"El cálculo del descuento de una factura de prueba muestra un decimal adicional aunque el importe original es correcto.","BUG","MEDIUM"
+"Queremos añadir una vista de capacidad disponible por equipo para planificar nuevas asignaciones.","FEATURE","LOW"
+"Un atacante está aprovechando una vulnerabilidad para copiar información de pacientes desde el servicio de producción.","SECURITY","CRITICAL"
+"Puedo entrar con mi usuario desde el navegador habitual pero el dispositivo nuevo solicita una aprobación pendiente.","ACCESS","MEDIUM"
+"Nos ayudaría una vista compacta del listado de clientes para utilizarla en tabletas.","FEATURE","LOW"
+"Mi usuario requiere una contraseña nueva pero el formulario no acepta la clave temporal entregada por soporte.","ACCESS","MEDIUM"
+"Proponemos habilitar una opción para exportar la agenda personal en formato compatible con calendarios externos.","FEATURE","LOW"
+"Una prueba de seguridad encontró respuestas que revelan si una cuenta existe y permiten enumerar usuarios.","SECURITY","HIGH"
+"Solicito incorporar un buscador por número de serie al catálogo para localizar equipos con mayor facilidad.","FEATURE","LOW"
+"Sería útil permitir que cada persona elija qué columnas ver en su lista de tareas.","FEATURE","LOW"
+"Un atacante está modificando los datos bancarios de beneficiarios dentro del entorno de producción.","SECURITY","CRITICAL"
+"El visor corta la última columna de un documento cuando lo abro desde una ventana pequeña.","BUG","MEDIUM"
+"Una inspección encontró un certificado privado incluido por error en un paquete descargable del sistema.","SECURITY","HIGH"
+"Queremos incorporar un campo de costo estimado en las solicitudes de compra futuras.","FEATURE","LOW"
+"La aplicación indica que mi cuenta aún espera autorización del administrador para acceder al espacio compartido.","ACCESS","MEDIUM"
+"Una exportación individual termina con un archivo vacío aunque la tabla tiene resultados visibles.","BUG","MEDIUM"
+"Todas las cuentas nuevas de esta semana quedaron sin autorización y el grupo completo no puede entrar al sistema operativo de trabajo.","ACCESS","HIGH"
+"Ningún empleado de las tres sucursales puede autenticarse desde la rotación del certificado del proveedor de identidad.","ACCESS","HIGH"
+"Necesitamos una opción nueva para descargar los gráficos del panel como imágenes.","FEATURE","LOW"
+"Una cuenta de servicio comprometida está descargando reportes confidenciales y mantiene conexiones no autorizadas activas.","SECURITY","CRITICAL"
+"El panel muestra credenciales de una cuenta de servicio dentro del código enviado al navegador.","SECURITY","HIGH"
+"El formulario de búsqueda refleja contenido sin escapar y una prueba autorizada confirmó una vulnerabilidad de scripts.","SECURITY","HIGH"
+"Los pedidos de todos los clientes quedan detenidos en procesamiento desde la caída del servicio de colas.","BUG","HIGH"
+"La cuenta de servicio de pruebas no puede identificarse porque su secreto de autenticación caducó.","ACCESS","MEDIUM"
+"El lector de códigos agrega un espacio al identificador cuando lo introduzco en una ficha de prueba.","BUG","MEDIUM"
+"Queremos agregar un simulador de distribución de asientos para planificar la ocupación de salas.","FEATURE","LOW"
+"Mi perfil rechaza el inicio de sesión porque el reloj de mi autenticador está desincronizado.","ACCESS","MEDIUM"
+"Solicitamos una opción de contraste ampliado para mejorar la lectura de las pantallas del inventario.","FEATURE","LOW"
+"El mecanismo de reservas vende la misma habitación a varios clientes en todas las propiedades y suspendimos nuevas ventas.","BUG","HIGH"
+"Mi tabla de inventario cambia el separador decimal al copiar una celda hacia el portapapeles.","BUG","MEDIUM"
+"Nos ayudaría incluir una vista de traducciones pendientes para los contenidos publicados en varios idiomas.","FEATURE","LOW"
+"La auditoría de la aplicación móvil confirmó que las credenciales quedan guardadas sin cifrar en el dispositivo.","SECURITY","HIGH"
+"Todas las recetas electrónicas de producción quedan sin firma por una falla del componente de validación clínica.","BUG","HIGH"
+"Ninguna terminal de las clínicas puede autenticar a su personal debido al rechazo general de las tarjetas de identificación.","ACCESS","HIGH"
+"El buscador de una ficha personal omite resultados cuando el apellido contiene un guion.","BUG","MEDIUM"
+"Queremos incorporar anotaciones sobre planos sin modificar el archivo original del documento.","FEATURE","LOW"
+"Proponemos ofrecer una vista de estructura jerárquica de las dependencias entre áreas.","FEATURE","LOW"
+"Una intrusión confirmada en la plataforma de videovigilancia permite a un tercero ver y exportar grabaciones privadas en vivo.","SECURITY","CRITICAL"
+"La alerta de respuesta a incidentes confirma una puerta trasera activa que está copiando las claves de firma de la organización.","SECURITY","CRITICAL"
+"El cliente de correo me permite identificarme pero la cuenta no tiene habilitado el acceso IMAP.","ACCESS","MEDIUM"
+"Se encontró una falla de validación que permite asociar a una cuenta permisos fuera de los aprobados durante su registro.","SECURITY","HIGH"
+"Mi usuario aparece sin licencia asignada y por eso el portal me impide entrar a la herramienta.","ACCESS","MEDIUM"
+"El canal de actualización de la aplicación descarga paquetes sin verificar su firma y representa una vulnerabilidad.","SECURITY","HIGH"
+"El acceso mediante cuentas institucionales dejó de funcionar para todo el alumnado y no hay credenciales alternativas.","ACCESS","HIGH"
+"Todos los usuarios externos autorizados de nuestros distribuidores quedaron sin acceso al portal de pedidos.","ACCESS","HIGH"
+"Nos gustaría disponer de una función de conversión de unidades al registrar dimensiones de materiales.","FEATURE","LOW"
+"El portal reconoce mi identidad pero mi cuenta figura como invitado y no puede acceder al área interna.","ACCESS","MEDIUM"
+"El procesador de nómina calcula cero para todo el personal y bloqueó la dispersión programada de la empresa.","BUG","HIGH"
+"La cuenta que me crearon en el directorio no está vinculada con mi empleado y el acceso queda pendiente.","ACCESS","MEDIUM"
+"Un análisis del correo corporativo mostró que falta protección contra suplantación del dominio y solicita mitigación.","SECURITY","HIGH"
+"Una revisión descubrió que las imágenes cargadas conservan metadatos sensibles que quedan accesibles públicamente.","SECURITY","HIGH"
+"Propongo incorporar dictado por voz como alternativa para redactar notas desde dispositivos móviles.","FEATURE","LOW"
+"Un atacante tomó el control de la central de comunicaciones y está desviando llamadas internas para capturar información.","SECURITY","CRITICAL"
+"El editor de diagramas desplaza las conexiones cuando muevo una figura dentro de un documento individual.","BUG","MEDIUM"
+"Solicitamos una función para comparar el presupuesto estimado con el consumo acumulado de un proyecto.","FEATURE","LOW"
+"Me gustaría registrar los periodos de indisponibilidad de equipos antes de asignarlos a una actividad.","FEATURE","LOW"
+"Se confirmó un secuestro de cuentas en curso que está enviando mensajes fraudulentos a clientes desde identidades corporativas.","SECURITY","CRITICAL"
+"Sería útil incorporar lectura de texto en voz alta para consultar instrucciones durante el trabajo de campo.","FEATURE","LOW"
+"La aplicación marca como obligatoria una casilla opcional al guardar una encuesta de prueba.","BUG","MEDIUM"
+"El servicio de medición industrial dejó de recibir lecturas de todas las plantas y detuvo la supervisión central.","BUG","HIGH"
+"La autenticación de las cuentas automatizadas de producción está rechazada en todas las integraciones y detuvo la operación.","ACCESS","HIGH"
+"El sistema de control industrial está recibiendo órdenes no autorizadas desde una consola comprometida que sigue activa.","SECURITY","CRITICAL"
+"La previsualización del correo conserva un asunto anterior al modificar la plantilla de mi borrador.","BUG","MEDIUM"

@@ -1,14 +1,15 @@
 import argparse
+import sys
 from pathlib import Path
 
 import joblib
-import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
 ML_DIR = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ML_DIR.parent))
+from ml.src.train import load_dataset, split_dataset
 DEFAULT_DATA_PATH = ML_DIR / "data" / "tickets.csv"
 DEFAULT_MODEL_PATH = ML_DIR / "artifacts" / "basic_category_model.joblib"
 
@@ -18,15 +19,10 @@ def train_basic(
     model_path: Path = DEFAULT_MODEL_PATH,
 ) -> dict:
     """Entrena el pipeline básico TF-IDF + Regresión Logística y guarda el modelo."""
-    data = pd.read_csv(data_path, encoding="utf-8")
-
-    X_train, X_test, y_train, _y_test = train_test_split(
-        data["message"],
-        data["category"],
-        test_size=0.2,
-        stratify=data["category"],
-        random_state=42,
-    )
+    data = load_dataset(data_path)
+    training, testing = split_dataset(data)
+    X_train, y_train = training["message"], training["category"]
+    X_test = testing["message"]
 
     model = Pipeline(
         [

@@ -56,9 +56,9 @@ El módulo ML se integra al proyecto manteniendo el servidor de Node.js (`POST /
 | Archivo | Rol |
 | --- | --- |
 | `ml/requirements.txt` | Dependencias de Python para entrenamiento (`pandas`, `scikit-learn`, `joblib`). |
-| `ml/data/tickets.csv` | Dataset sintético balanceado en español con **280 solicitudes únicas** (`message,category,priority`). |
+| `ml/data/tickets.csv` | Dataset vigente de **200 solicitudes sintéticas únicas** (`message,category,priority`), con reserva fija 160/40. |
 | `ml/src/preprocess.py` | Constantes (`CATEGORIES`, `PRIORITIES`, `SPANISH_STOP_WORDS`) y función `normalize_text()` para quitar acentos, pasar a minúsculas y colapsar espacios. |
-| `ml/src/train.py` | Validación de esquema y duplicados, pipeline `TfidfVectorizer(ngram_range=(1, 2))` + `LogisticRegression(C=3.0, class_weight="balanced")`, partición 80/20 estratificada y serialización con `joblib`. |
+| `ml/src/train.py` | Validación de esquema y duplicados, pipeline `TfidfVectorizer(ngram_range=(1, 2))` + `LogisticRegression(C=3.0, class_weight="balanced")`, entrenamiento en las primeras 160 filas y evaluación en las últimas 40, con serialización mediante `joblib`. |
 | `ml/artifacts/metrics.json` | Reporte JSON reproducible con versiones, distribución de clases, matrices de confusión y métricas de prueba. |
 | `ml/tests/test_ml.py` | 5 pruebas unitarias con `unittest` (normalización, balance del CSV, rechazo de etiquetas inválidas, entrenamiento fin a fin y cero fuga de datos). |
 | `ml/README.md` | Documentación técnica y guía de integración para Parte 2 y Parte 3. |
@@ -67,20 +67,20 @@ El módulo ML se integra al proyecto manteniendo el servidor de Node.js (`POST /
 
 ## 3. Diseño del dataset (`ml/data/tickets.csv`)
 
-El archivo contiene **280 tickets únicos** en UTF-8 mezclando redacción natural con y sin acentos.
+Desde el 24 de noviembre de 2026, el archivo contiene **200 tickets sintéticos únicos** en UTF-8. Sustituye al dataset de 280 de la Parte 1, que permanece recuperable en el historial Git. Las primeras 160 filas de datos son para entrenamiento y las últimas 40 para prueba; el encabezado no cuenta. No cambiar su orden antes de entrenar. Las particiones conservan 40 y 10 ejemplos por categoría, respectivamente.
 
 ### Distribución por categoría y prioridad
 
 | Categoría | Prioridad | Cantidad | Enfoque de los ejemplos |
 | --- | --- | ---: | --- |
-| `ACCESS` | `MEDIUM` | 45 | Fallos individuales de inicio de sesión, contraseña, MFA/2FA, token vencido o cuenta bloqueada. |
-| `ACCESS` | `HIGH` | 25 | Bloqueo masivo de inicio de sesión, SSO o Active Directory afectando a toda la empresa o sucursal. |
-| `BUG` | `MEDIUM` | 45 | Fallas localizadas en vistas, botones, exportación PDF/Excel, cálculos, filtros o formularios. |
-| `BUG` | `HIGH` | 25 | Caída general en producción, error 500/503 masivo o base de datos sin responder para todos los clientes. |
-| `FEATURE` | `LOW` | 70 | Solicitudes de nuevas funcionalidades, reportes, integraciones, alertas y mejoras de interfaz. |
-| `SECURITY` | `HIGH` | 35 | Vulnerabilidades (SQLi, XSS, CSRF, IDOR, path traversal), credenciales/tokens expuestos, phishing o permisos públicos. |
-| `SECURITY` | `CRITICAL` | 35 | Incidentes activos: ransomware, acceso no autorizado en curso, secuestro de cuentas o extracción activa de datos. |
-| **Total** | | **280** | **70 ejemplos por cada categoría; 35–90 por prioridad** |
+| `ACCESS` | `MEDIUM` | 30 | Problemas individuales de autenticación, permisos de acceso o recuperación de cuenta. |
+| `ACCESS` | `HIGH` | 20 | Acceso bloqueado para grupos completos o toda la operación. |
+| `BUG` | `MEDIUM` | 30 | Fallas localizadas, sin afectación general descrita. |
+| `BUG` | `HIGH` | 20 | Fallas de producción con afectación general o interrupción operativa. |
+| `FEATURE` | `LOW` | 50 | Solicitudes de nuevas funcionalidades y mejoras de planificación. |
+| `SECURITY` | `HIGH` | 25 | Vulnerabilidades o exposición de secretos sin actividad maliciosa confirmada en curso. |
+| `SECURITY` | `CRITICAL` | 25 | Incidentes activos confirmados, intrusión, extracción de datos o ransomware. |
+| **Total** | | **200** | **50 ejemplos por categoría; LOW 50, MEDIUM 60, HIGH 65, CRITICAL 25** |
 
 ### Garantía contra fuga de datos (*data leakage*)
 * **Ninguno** de los 12 mensajes de referencia en `tests/cases.json` aparece en `ml/data/tickets.csv` (ni de forma literal ni tras aplicar `normalize_text()`).
@@ -91,7 +91,7 @@ El archivo contiene **280 tickets únicos** en UTF-8 mezclando redacción natura
 
 ## 4. Requisitos y ejecución en PowerShell
 
-Probado con **Python 3.13.7** (`pandas 2.3.3`, `scikit-learn 1.8.0`, `joblib 1.5.3`).
+La versión inicial se probó con Python 3.13.7. El dataset actual se verificó con Python 3.14.7, pandas 2.3.3, scikit-learn 1.9.1 y joblib 1.6.0. CI utiliza Python 3.13; se deben instalar las dependencias de `ml/requirements.txt`.
 
 ### Preparar entorno virtual (opcional si ya tienes las librerías globales)
 
@@ -119,37 +119,38 @@ python -m unittest discover -s ml/tests -v
 
 ## 5. Resultados reales medidos del entrenamiento
 
-Métricas registradas en `ml/artifacts/metrics.json` sobre el split estratificado **80/20** (`train_size = 224`, `test_size = 56`, `random_state = 42`):
+Métricas vigentes en `ml/artifacts/metrics.json`: reserva fija **160/40** sobre el CSV de 200 filas, sin volver a sortear. `random_state = 42` es la semilla del clasificador. Ambos objetivos comparten los mismos mensajes de entrenamiento y prueba.
 
 ### Resumen global
 
 | Modelo | Accuracy | Macro F1 | Weighted F1 | Muestras de prueba |
 | --- | ---: | ---: | ---: | ---: |
-| **Categoría (`category_model`)** | **0.8571 (85.71%)** | 0.8568 | 0.8568 | 56 |
-| **Prioridad (`priority_model`)** | **0.8214 (82.14%)** | 0.8384 | 0.8178 | 56 |
+| **Categoría (`category_model`)** | **0.9000 (90%)** | 0.9008 | 0.9008 | 40 |
+| **Prioridad (`priority_model`)** | **0.9000 (90%)** | 0.9188 | 0.8990 | 40 |
 
 ### Detalle por clase — Categoría
 
 | Clase | Precision | Recall | F1-score | Soporte |
 | --- | ---: | ---: | ---: | ---: |
-| `ACCESS` | 0.8125 | 0.9286 | 0.8667 | 14 |
-| `BUG` | 0.7857 | 0.7857 | 0.7857 | 14 |
-| `FEATURE` | 0.9286 | 0.9286 | 0.9286 | 14 |
-| `SECURITY` | 0.9167 | 0.7857 | 0.8462 | 14 |
+| `ACCESS` | 0.8182 | 0.9000 | 0.8571 | 10 |
+| `BUG` | 0.8182 | 0.9000 | 0.8571 | 10 |
+| `FEATURE` | 1.0000 | 1.0000 | 1.0000 | 10 |
+| `SECURITY` | 1.0000 | 0.8000 | 0.8889 | 10 |
 
 ### Detalle por clase — Prioridad
 
 | Clase | Precision | Recall | F1-score | Soporte |
 | --- | ---: | ---: | ---: | ---: |
-| `LOW` | 0.8235 | 1.0000 | 0.9032 | 14 |
-| `MEDIUM` | 0.8000 | 0.6667 | 0.7273 | 18 |
-| `HIGH` | 0.7778 | 0.8235 | 0.8000 | 17 |
-| `CRITICAL` | 1.0000 | 0.8571 | 0.9231 | 7 |
+| `LOW` | 1.0000 | 1.0000 | 1.0000 | 10 |
+| `MEDIUM` | 0.9000 | 0.7500 | 0.8182 | 12 |
+| `HIGH` | 0.8000 | 0.9231 | 0.8571 | 13 |
+| `CRITICAL` | 1.0000 | 1.0000 | 1.0000 | 5 |
 
 ### Ejemplo de predicción en vivo (`train.py`)
 Para `"Alguien entró a mi cuenta sin autorización"`:
-* `category`: **`SECURITY`** (confianza: `0.6759`)
-* `priority`: **`CRITICAL`** (confianza: `0.8986`)
+* Clase cruda de categoría: **`SECURITY`** (confianza aproximada: `0.3883`).
+* Clase cruda de prioridad: **`CRITICAL`** (confianza aproximada: `0.3323`).
+* La API conserva el umbral 0.55 y devuelve BUG/MEDIUM provisional con revisión humana para este ejemplo; las métricas anteriores son de los clasificadores, no del servicio completo.
 
 ---
 
@@ -243,6 +244,6 @@ El 18 de noviembre de 2026 (America/Mexico_City), la integración pasó **60 pru
 | Groq | 12/12 (100%) | 11/12 (91.67%) | 12/12 |
 | ML local | 7/12 (58.33%) | 6/12 (50%) | 12/12 |
 
-Los dos primeros resultados reutilizan las evidencias históricas sin reejecutar Groq. La tabla triple mantiene las mismas referencias y el mismo criterio; no son corridas simultáneas. Los fallos y respuestas completas se conservan. En ML, los dos mensajes adversariales quedaron BUG/MEDIUM provisional con revisión humana: no se reportan como clasificaciones correctas. Las métricas de los 56 ejemplos de prueba del entrenamiento son de otra evaluación y no deben sustituir los resultados de estos doce casos.
+Los dos primeros resultados reutilizan las evidencias históricas sin reejecutar Groq. La tabla triple mantiene las mismas referencias y el mismo criterio; no son corridas simultáneas. Los fallos y respuestas completas se conservan. En ML, los dos mensajes adversariales quedaron BUG/MEDIUM provisional con revisión humana: no se reportan como clasificaciones correctas. Las métricas de los 56 ejemplos de prueba del entrenamiento anterior de 280 filas son históricas y no deben sustituir los resultados de estos doce casos ni los del nuevo holdout de 40.
 
 Evidencias: [ML](../evidence/ml-run-01.json), [API ML](../evidence/ml-api-run-01.json), [comparación triple y conclusión](../evidence/comparison-ml.md). Instrucciones completas y aportaciones individuales en el [README principal](../README.md#integración-ml-local).
