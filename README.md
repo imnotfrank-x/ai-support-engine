@@ -322,6 +322,14 @@ Desde la raíz del repositorio, con las dependencias de `ml/requirements.txt` in
 
 Verificación del 24 de noviembre de 2026: **23 pruebas Python y 60 Node aprobadas**. El ejemplo básico de Javier logró 35/40 (87.5%) en categoría. Los pipelines del servicio lograron 36/40 (90%) en categoría y 36/40 (90%) en prioridad por separado; los reportes están en `ml/artifacts/metrics.json`, con hash del CSV, versiones y reparto. No son porcentajes de coincidencia conjunta ni de la API completa con la regla de confianza.
 
+### Tabla de los 40 casos en terminal
+
+`python ml/examples/evaluate_basic.py` imprime una fila por cada caso reservado (filas de datos 161–200): mensaje abreviado, categoría real, predicción y acierto. Después muestra **accuracy** en porcentaje y aciertos/total, precisión, recall, F1-score y soporte por categoría, promedios macro y ponderado, y matriz de confusión. El ejemplo básico solo predice categoría.
+
+`python ml/src/train.py` imprime la tabla de esos mismos 40 casos con categoría y prioridad reales y predichas, acierto conjunto y los reportes de métricas y matrices de confusión de los dos objetivos. Se conserva la división 160/40 y no se ocultan errores. Los textos solo se abrevian para mostrar la tabla; el CSV no cambia. Los reportes son de los clasificadores, sin el fallback de confianza de la API.
+
+Para mostrarlo al profesor, ejecutar los comandos anteriores desde el entorno virtual. Si falta el modelo básico, ejecutar primero `python ml/examples/train_basic.py`. La salida tabular se verificó con **29 pruebas Python aprobadas**, incluyendo que se imprimen exactamente las 40 filas y que las métricas coinciden con las calculadas sobre el holdout.
+
 Se mantiene el umbral de 0.55 del servicio. Por ejemplo, el mensaje de acceso no autorizado usado en la demostración obtiene categoría cruda SECURITY con confianza aproximada 0.3883 y la API devuelve BUG/MEDIUM provisional con revisión humana. Se documenta la incertidumbre y se conserva la revisión; no se ajustó el umbral para aumentar el resultado de prueba.
 
 El conjunto de 40 permite evaluar esta demostración sintética, no garantizar generalización real. Las evidencias anteriores no se reescriben; nuevas ejecuciones deben guardarse con otro nombre. Los `.joblib` y `.venv` permanecen fuera de Git. La integración de los scripts de Javier conserva su commit original `7faa431`; estos cambios ajustan su lectura al reparto fijo.

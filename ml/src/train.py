@@ -19,6 +19,7 @@ if not __package__:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from ml.src.preprocess import CATEGORIES, PRIORITIES, SPANISH_STOP_WORDS, normalize_text
+from ml.src.console_report import format_case_table, format_metrics_report
 
 ML_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = ML_DIR.parent
@@ -273,10 +274,19 @@ def main(argv: list[str] | None = None) -> int:
         random_state=args.random_state,
     )
 
-    print("=== Reporte de clasificación: category ===")
-    print(result["reports"]["category"])
-    print("=== Reporte de clasificación: priority ===")
-    print(result["reports"]["priority"])
+    _training, testing = split_dataset(load_dataset(args.data), args.test_size)
+    category_predictions = result['category_model'].predict(testing['normalized_message'])
+    priority_predictions = result['priority_model'].predict(testing['normalized_message'])
+    print(format_case_table(
+        testing['message'], testing['category'], category_predictions,
+        row_numbers=testing.index + 1,
+        expected_priorities=testing['priority'], predicted_priorities=priority_predictions,
+    ))
+    print()
+    print(format_metrics_report(testing['category'], category_predictions, CATEGORIES))
+    print()
+    print(format_metrics_report(testing['priority'], priority_predictions, PRIORITIES, target='prioridad'))
+    print('\nEstas son predicciones de los clasificadores; no aplican el fallback por confianza de FastAPI.')
 
     sample = "Alguien entró a mi cuenta sin autorización"
     normalized_sample = normalize_text(sample)

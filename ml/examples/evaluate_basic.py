@@ -3,11 +3,11 @@ import sys
 from pathlib import Path
 
 import joblib
-from sklearn.metrics import classification_report, confusion_matrix
 
 ML_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ML_DIR.parent))
 from ml.src.train import load_dataset, split_dataset
+from ml.src.console_report import format_case_table, format_metrics_report
 DEFAULT_DATA_PATH = ML_DIR / "data" / "tickets.csv"
 DEFAULT_MODEL_PATH = ML_DIR / "artifacts" / "basic_category_model.joblib"
 DEFAULT_MESSAGE = "Encontré datos de otros clientes"
@@ -34,12 +34,9 @@ def evaluate_basic(
     X_test, y_test = testing["message"], testing["category"]
 
     predictions = model.predict(X_test)
-    print("=== Reporte de clasificación ===")
-    print(classification_report(y_test, predictions, zero_division=0))
-
-    print("=== Matriz de confusión ===")
-    print("Etiquetas:", list(model.classes_))
-    print(confusion_matrix(y_test, predictions, labels=model.classes_))
+    print(format_case_table(X_test, y_test, predictions, row_numbers=testing.index + 1))
+    print()
+    print(format_metrics_report(y_test, predictions, model.classes_))
 
     new_message = [message]
     category = model.predict(new_message)[0]

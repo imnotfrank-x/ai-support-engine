@@ -93,6 +93,8 @@ Desde el 24 de noviembre de 2026, el archivo contiene **200 tickets sintéticos 
 
 La versión inicial se probó con Python 3.13.7. El dataset actual se verificó con Python 3.14.7, pandas 2.3.3, scikit-learn 1.9.1 y joblib 1.6.0. CI utiliza Python 3.13; se deben instalar las dependencias de `ml/requirements.txt`.
 
+Para imprimir la evaluación en terminal: `python ml/examples/train_basic.py` y después `python ml/examples/evaluate_basic.py` muestran los 40 casos con categoría real y predicha, acierto y error, accuracy, precisión, recall, F1-score, soporte y matriz de confusión. `python ml/src/train.py` muestra además la prioridad real y predicha de cada caso y las métricas por prioridad. Los mensajes se abrevian solo para la tabla. La impresión no cambia el dataset, el entrenamiento ni las predicciones; se verificó con 29 pruebas Python. Véase también la [guía del README principal](../README.md#tabla-de-los-40-casos-en-terminal).
+
 ### Preparar entorno virtual (opcional si ya tienes las librerías globales)
 
 ```powershell

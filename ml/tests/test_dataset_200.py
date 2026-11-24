@@ -68,8 +68,12 @@ class TestDataset200(unittest.TestCase):
             expected = load_dataset(DEFAULT_DATA_PATH).message.iloc[160:].tolist()
             with patch('ml.examples.evaluate_basic.joblib.load', return_value=model):
                 with patch.object(model, 'predict', wraps=model.predict) as predict:
-                    with contextlib.redirect_stdout(io.StringIO()):
+                    printed = io.StringIO()
+                    with contextlib.redirect_stdout(printed):
                         self.assertEqual(evaluate_basic(model_path=model_path), 0)
+            self.assertIn('40 ejemplos de prueba', printed.getvalue())
+            self.assertIn('Accuracy:', printed.getvalue())
+            self.assertIn('F1-score', printed.getvalue())
             self.assertEqual(list(predict.call_args_list[0].args[0]), expected)
             self.assertEqual(len(predict.call_args_list[1].args[0]), 1)
 
